@@ -1,68 +1,92 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#70d1f5">
-<meta name="description" content="منبر التحصيلي - جداول التأسيس والتدريب للطلاب والطالبات">
+<meta name="description" content="منبر التحصيلي - جداول التأسيس والتدريب">
 <title>منبر التحصيلي</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
---bg:#080d19;--surface:#111d33;--fg:#f5f6ff;--muted:#a8b8d2;
---line:#293d5b;--brand:#35bdf3;--brand2:#536dff;
---math:#4d83ff;--phys:#a876ff;--chem:#ed9142;--bio:#35bd8b;
---practice:#ec5d91;--subj:var(--math);
---font:"Tajawal",Arial,sans-serif;
+  --bg:#080d19;
+  --surface:#111d33;
+  --fg:#f5f6ff;
+  --muted:#a8b8d2;
+  --line:#293d5b;
+  --brand:#35bdf3;
+  --brand2:#536dff;
+  --math:#4d83ff;
+  --phys:#a876ff;
+  --chem:#ed9142;
+  --bio:#35bd8b;
+  --practice:#ec5d91;
+  --subj:var(--math);
+  --font:"Tajawal",Arial,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 [hidden]{display:none!important}
 body{
-background:linear-gradient(180deg,#83dcff 0%,#52b9ed 12%,#287ebc 27%,#173e70 43%,#102543 62%,#080d19 100%);
-background-attachment:fixed;color:var(--fg);font-family:var(--font);
-font-size:16px;line-height:1.7;margin:0;direction:rtl;text-align:right;
+  margin:0;
+  color:var(--fg);
+  font-family:var(--font);
+  font-size:16px;
+  line-height:1.7;
+  direction:rtl;
+  text-align:right;
+  background:linear-gradient(180deg,#83dcff 0%,#52b9ed 12%,#287ebc 27%,#173e70 43%,#102543 62%,#080d19 100%);
+  background-attachment:fixed;
 }
 button,input{font-family:var(--font)}
-button{touch-action:manipulation}
+button{touch-action:manipulation;cursor:pointer}
 .wrap{max-width:880px;margin:auto;padding:0 16px}
 
 /* الرأس */
 .hero{
-background:radial-gradient(ellipse at 70% 0%,#ffffff55,transparent 60%),
-linear-gradient(135deg,#91e2ff,#55bdf0,#348ed0);
-color:white;padding:27px 0 58px;border-bottom:1px solid #ffffff55;
+  padding:27px 0 58px;
+  color:white;
+  border-bottom:1px solid #ffffff55;
+  background:
+    radial-gradient(ellipse at 70% 0%,#ffffff55,transparent 60%),
+    linear-gradient(135deg,#91e2ff,#55bdf0,#348ed0);
 }
 .hero-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand-copy{text-align:right}
 .brand-copy h1{font-size:clamp(30px,7vw,44px);font-weight:800;color:#092b50;margin:0}
 .brand-copy p{margin:5px 0 0;color:#eaf8ff;font-size:16px;font-weight:700}
 .free-badge{
-flex-shrink:0;padding:8px 16px;border-radius:30px;background:#ffffffdf;
-border:1px solid white;color:#123b60;font-weight:800;font-size:16px;
-box-shadow:0 5px 18px #064c8430;
+  flex-shrink:0;padding:8px 16px;border-radius:30px;
+  background:#ffffffdf;border:1px solid white;color:#123b60;
+  font-weight:800;font-size:16px;box-shadow:0 5px 18px #064c8430;
 }
 
 /* المواعيد */
 .exam-area{margin-top:16px}
-.exam-toggle{
-width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
-font:inherit;font-size:18px;font-weight:800;color:white;
-background:linear-gradient(135deg,#172d4d,#24517a);
-border:1px solid #47739c;border-radius:15px;padding:14px 17px;cursor:pointer;
+.exam-toggle,.telegram-toggle{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  gap:10px;font:inherit;font-size:18px;font-weight:800;color:white;
+  background:linear-gradient(135deg,#172d4d,#24517a);
+  border:1px solid #47739c;border-radius:15px;padding:14px 17px;
 }
-.exam-toggle:hover{background:linear-gradient(135deg,#203d63,#28517d)}
-.exam-arrow{transition:transform .3s}
-.exam-toggle[aria-expanded="true"] .exam-arrow{transform:rotate(180deg)}
-.exam-list{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .35s ease,opacity .25s ease}
-.exam-list.open{grid-template-rows:1fr;opacity:1}
-.exam-list-inner{overflow:hidden;min-height:0}
+.exam-toggle:hover,.telegram-toggle:hover{filter:brightness(1.15)}
+.exam-arrow,.telegram-arrow{transition:transform .3s}
+.exam-toggle[aria-expanded="true"] .exam-arrow,
+.telegram-toggle[aria-expanded="true"] .telegram-arrow{transform:rotate(180deg)}
+.exam-list,.telegram-list{
+  display:grid;grid-template-rows:0fr;opacity:0;
+  transition:grid-template-rows .35s ease,opacity .25s ease;
+}
+.exam-list.open,.telegram-list.open{grid-template-rows:1fr;opacity:1}
+.exam-list-inner,.telegram-list-inner{overflow:hidden;min-height:0}
 .exam-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-top:12px}
 .exam-card{
-background:linear-gradient(145deg,#14233d,#101b30);border:1px solid #344d70;
-border-radius:15px;padding:15px;min-width:0;
+  background:linear-gradient(145deg,#14233d,#101b30);
+  border:1px solid #344d70;border-radius:15px;padding:15px;min-width:0;
 }
 .exam-card.first{border-top:3px solid #45c4f5}
 .exam-card.second{border-top:3px solid #8b83ff}
@@ -77,15 +101,22 @@ border-radius:15px;padding:15px;min-width:0;
 
 /* التبويبات */
 .tabs{
-display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--surface);
-border:1px solid var(--line);border-radius:16px;padding:6px;margin-top:16px;
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:6px;margin-top:16px;
 }
-.tab{font:inherit;font-size:20px;font-weight:800;border:0;background:transparent;color:var(--muted);padding:12px;border-radius:11px;cursor:pointer}
+.tab{
+  font:inherit;font-size:20px;font-weight:800;border:0;
+  background:transparent;color:var(--muted);padding:12px;border-radius:11px;
+}
 .tab[aria-selected="true"]{background:var(--brand);color:white}
 .tab[data-tab="practice"][aria-selected="true"]{background:var(--practice)}
 
 /* الأقسام */
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:16px}
+.panel{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:20px;margin-top:16px;
+}
 .panel h2{margin:0 0 4px;font-size:22px}
 .hint{margin:0 0 16px;color:var(--muted)}
 .label{display:block;font-weight:700;margin-bottom:8px}
@@ -93,20 +124,23 @@ border:1px solid var(--line);border-radius:16px;padding:6px;margin-top:16px;
 .chip{position:relative}
 .chip input{position:absolute;opacity:0;inset:0}
 .chip span{
-display:block;text-align:center;font-weight:800;font-size:18px;padding:12px 8px;
-border-radius:12px;border:2px solid var(--c);color:var(--c);transition:.2s;cursor:pointer;
+  display:block;text-align:center;font-weight:800;font-size:18px;
+  padding:12px 8px;border-radius:12px;border:2px solid var(--c);
+  color:var(--c);transition:.2s;cursor:pointer;
 }
 .chip input:checked+span{background:var(--c);color:white}
 .chip input:focus-visible+span{outline:3px solid white;outline-offset:3px}
 .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:18px}
 input[type=number]{
-width:100%;font:inherit;font-size:20px;font-weight:700;padding:10px 14px;
-border-radius:12px;border:2px solid var(--line);background:#0c1120;color:var(--fg);
+  width:100%;font:inherit;font-size:20px;font-weight:700;
+  padding:10px 14px;border-radius:12px;border:2px solid var(--line);
+  background:#0c1120;color:var(--fg);
 }
 input[type=number]:focus{outline:2px solid var(--brand);border-color:var(--brand)}
 .go{
-font:inherit;font-size:19px;font-weight:800;width:100%;border:0;border-radius:14px;
-padding:14px;color:white;background:linear-gradient(135deg,var(--brand),var(--brand2));cursor:pointer;
+  font:inherit;font-size:19px;font-weight:800;width:100%;border:0;
+  border-radius:14px;padding:14px;color:white;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));
 }
 .go:hover{filter:brightness(1.12)}
 .go:active{transform:scale(.99)}
@@ -139,21 +173,12 @@ padding:14px;color:white;background:linear-gradient(135deg,var(--brand),var(--br
 
 /* التليجرام */
 .telegram-area{margin:20px 0}
-.telegram-toggle{
-width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
-font:inherit;font-size:18px;font-weight:800;color:white;background:#17243c;
-border:1px solid #344666;border-radius:15px;padding:14px;cursor:pointer;
-}
-.telegram-toggle:hover{background:#213354}
-.telegram-toggle .arrow{transition:.25s}
-.telegram-toggle[aria-expanded="true"] .arrow{transform:rotate(180deg)}
-.telegram-list{display:grid;grid-template-rows:0fr;opacity:0;transition:.28s}
-.telegram-list.open{grid-template-rows:1fr;opacity:1}
-.telegram-list-inner{overflow:hidden;min-height:0}
+.telegram-toggle{justify-content:center;background:#17243c;border-color:#344666}
 .channel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;padding-top:12px}
 .channel-link{
-display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;
-color:white;background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:13px 15px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  text-decoration:none;color:white;background:var(--surface);
+  border:1px solid var(--line);border-radius:13px;padding:13px 15px;
 }
 .channel-link:hover{border-color:var(--brand)}
 .channel-link strong{display:block}
@@ -161,184 +186,182 @@ color:white;background:var(--surface);border:1px solid var(--line);border-radius
 .tg-icon{display:grid;place-items:center;width:37px;height:37px;border-radius:11px;background:#1d4770;color:#8dd3ff}
 
 /* الأدعية */
-.prayer{margin-top:22px;padding:19px 20px;border-radius:16px;background:linear-gradient(145deg,#151d31,#211c3b);border:1px solid #34365a;text-align:center}
+.prayer,.personal-prayer{
+  margin-top:22px;padding:19px 20px;border-radius:16px;
+  background:linear-gradient(145deg,#151d31,#211c3b);
+  border:1px solid #34365a;text-align:center;
+}
 .prayer h2{margin:0 0 8px;font-size:20px;color:#d9d5ff}
 .prayer p{margin:0;color:#e5e8f5;font-size:16px;line-height:2}
-.personal-prayer{margin-top:18px;padding:18px;border-radius:15px;background:#101a2b;border:1px solid #465080;text-align:center}
+.personal-prayer{margin-top:18px;background:#101a2b;border-color:#465080}
 .personal-prayer h3{color:#b9b4ff;margin:0 0 8px;font-size:20px}
 .personal-prayer p{color:#e5e8f5;margin:0;line-height:2}
 footer{text-align:center;color:var(--muted);font-size:14px;padding:24px 0 20px}
 
 @media(max-width:480px){
-.hero{padding:23px 0 56px}
-.hero-row{gap:8px}
-.brand-copy h1{font-size:27px}
-.brand-copy p{font-size:13px}
-.free-badge{padding:8px 11px;font-size:14px}
-.panel{padding:16px}
-.exam-content{grid-template-columns:1fr}
-.exam-card{padding:13px}
-.exam-toggle{font-size:16px}
+  .hero{padding:23px 0 56px}
+  .hero-row{gap:8px}
+  .brand-copy h1{font-size:27px}
+  .brand-copy p{font-size:13px}
+  .free-badge{padding:8px 11px;font-size:14px}
+  .panel{padding:16px}
+  .exam-content{grid-template-columns:1fr}
+  .exam-card{padding:13px}
+  .exam-toggle{font-size:16px}
 }
-
 @media print{
-body{background:white;color:#172036}
-.hero,.tabs,.panel,.go,.done,.err,footer,.telegram-area,.prayer,.personal-prayer,.exam-area{display:none!important}
-.summary,.cheer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.day{break-inside:avoid}
-.day-body{color:#172036}
-.task small{color:#555}
+  body{background:white;color:#172036}
+  .hero,.tabs,.panel,.go,.done,.err,footer,.telegram-area,.prayer,.personal-prayer,.exam-area{display:none!important}
+  .summary,.cheer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .day{break-inside:avoid}
+  .day-body{color:#172036}
+  .task small{color:#555}
 }
 </style>
 </head>
 
 <body>
 <header class="hero">
-<div class="wrap hero-row">
-  <div class="brand-copy">
-    <h1>منبر التحصيلي</h1>
-    <p>علمٌ يُتقن، وهدفٌ يُدرك</p>
+  <div class="wrap hero-row">
+    <div class="brand-copy">
+      <h1>منبر التحصيلي</h1>
+      <p>علمٌ يُتقن، وهدفٌ يُدرك</p>
+    </div>
+    <div class="free-badge">مجاني 100٪</div>
   </div>
-  <div class="free-badge">مجاني 100٪</div>
-</div>
 </header>
 
 <main class="wrap">
 
 <section class="exam-area">
-<button class="exam-toggle" id="exam-toggle" type="button" aria-expanded="false" aria-controls="exam-list">
-  <span>📅 مواعيد اختبار التحصيلي</span>
-  <span class="exam-arrow">⌄</span>
-</button>
+  <button class="exam-toggle" id="exam-toggle" type="button" aria-expanded="false" aria-controls="exam-list">
+    <span>📅 مواعيد اختبار التحصيلي</span>
+    <span class="exam-arrow">⌄</span>
+  </button>
+  <div class="exam-list" id="exam-list">
+    <div class="exam-list-inner">
+      <div class="exam-content">
+        <article class="exam-card first">
+          <h3>الفترة الأولى</h3>
+          <div class="exam-date">27 مايو – 31 مايو 2027</div>
+          <div class="countdown">
+            <div class="time-box"><span class="time-number" id="f-days">--</span><span class="time-label">يوم</span></div>
+            <div class="time-box"><span class="time-number" id="f-hours">--</span><span class="time-label">ساعة</span></div>
+            <div class="time-box"><span class="time-number" id="f-minutes">--</span><span class="time-label">دقيقة</span></div>
+            <div class="time-box"><span class="time-number" id="f-seconds">--</span><span class="time-label">ثانية</span></div>
+          </div>
+          <p class="exam-status" id="f-status">الوقت المتبقي لبداية الفترة الأولى</p>
+        </article>
 
-<div class="exam-list" id="exam-list">
-<div class="exam-list-inner">
-<div class="exam-content">
-
-<article class="exam-card first">
-<h3>الفترة الأولى</h3>
-<div class="exam-date">27 مايو – 31 مايو 2027</div>
-<div class="countdown">
-<div class="time-box"><span class="time-number" id="f-days">--</span><span class="time-label">يوم</span></div>
-<div class="time-box"><span class="time-number" id="f-hours">--</span><span class="time-label">ساعة</span></div>
-<div class="time-box"><span class="time-number" id="f-minutes">--</span><span class="time-label">دقيقة</span></div>
-<div class="time-box"><span class="time-number" id="f-seconds">--</span><span class="time-label">ثانية</span></div>
-</div>
-<p class="exam-status" id="f-status">الوقت المتبقي لبداية الفترة الأولى</p>
-</article>
-
-<article class="exam-card second">
-<h3>الفترة الثانية</h3>
-<div class="exam-date">4 يونيو – 8 يونيو 2027</div>
-<div class="countdown">
-<div class="time-box"><span class="time-number" id="s-days">--</span><span class="time-label">يوم</span></div>
-<div class="time-box"><span class="time-number" id="s-hours">--</span><span class="time-label">ساعة</span></div>
-<div class="time-box"><span class="time-number" id="s-minutes">--</span><span class="time-label">دقيقة</span></div>
-<div class="time-box"><span class="time-number" id="s-seconds">--</span><span class="time-label">ثانية</span></div>
-</div>
-<p class="exam-status" id="s-status">الوقت المتبقي لبداية الفترة الثانية</p>
-</article>
-
-</div>
-</div>
-</div>
+        <article class="exam-card second">
+          <h3>الفترة الثانية</h3>
+          <div class="exam-date">4 يونيو – 8 يونيو 2027</div>
+          <div class="countdown">
+            <div class="time-box"><span class="time-number" id="s-days">--</span><span class="time-label">يوم</span></div>
+            <div class="time-box"><span class="time-number" id="s-hours">--</span><span class="time-label">ساعة</span></div>
+            <div class="time-box"><span class="time-number" id="s-minutes">--</span><span class="time-label">دقيقة</span></div>
+            <div class="time-box"><span class="time-number" id="s-seconds">--</span><span class="time-label">ثانية</span></div>
+          </div>
+          <p class="exam-status" id="s-status">الوقت المتبقي لبداية الفترة الثانية</p>
+        </article>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="tabs" role="tablist" aria-label="نوع الخطة">
-<button class="tab" id="t-found" type="button" role="tab" aria-selected="true" aria-controls="p-found">تأسيس</button>
-<button class="tab" id="t-practice" data-tab="practice" type="button" role="tab" aria-selected="false" aria-controls="p-practice">تدريب</button>
+  <button class="tab" id="t-found" type="button" role="tab" aria-selected="true" aria-controls="p-found">تأسيس</button>
+  <button class="tab" id="t-practice" data-tab="practice" type="button" role="tab" aria-selected="false" aria-controls="p-practice">تدريب</button>
 </div>
 
 <section class="panel" id="p-found" role="tabpanel">
-<h2>خطة التأسيس</h2>
-<p class="hint">اختر المادة وعدد المحاضرات والأيام، ونقسمها لك على الأيام.</p>
-<span class="label">المادة</span>
-
-<div class="chips">
-<label class="chip" style="--c:var(--math)"><input type="radio" name="subj" value="math" checked><span>الرياضيات</span></label>
-<label class="chip" style="--c:var(--phys)"><input type="radio" name="subj" value="phys"><span>الفيزياء</span></label>
-<label class="chip" style="--c:var(--chem)"><input type="radio" name="subj" value="chem"><span>الكيمياء</span></label>
-<label class="chip" style="--c:var(--bio)"><input type="radio" name="subj" value="bio"><span>الأحياء</span></label>
-</div>
-
-<div class="fields">
-<div>
-<label class="label" for="lec">كم عدد المحاضرات؟</label>
-<input type="number" id="lec" min="1" max="300" value="24" inputmode="numeric">
-</div>
-<div>
-<label class="label" for="fdays">كم يوم تبي تخلصها فيه؟</label>
-<input type="number" id="fdays" min="1" max="120" value="8" inputmode="numeric">
-</div>
-</div>
-<button class="go" id="go-found" type="button">سوّي لي الجدول</button>
-<p class="err" id="err-found" role="alert"></p>
+  <h2>خطة التأسيس</h2>
+  <p class="hint">اختر المادة وعدد المحاضرات والأيام، ونقسمها لك على الأيام.</p>
+  <span class="label">المادة</span>
+  <div class="chips">
+    <label class="chip" style="--c:var(--math)"><input type="radio" name="subj" value="math" checked><span>الرياضيات</span></label>
+    <label class="chip" style="--c:var(--phys)"><input type="radio" name="subj" value="phys"><span>الفيزياء</span></label>
+    <label class="chip" style="--c:var(--chem)"><input type="radio" name="subj" value="chem"><span>الكيمياء</span></label>
+    <label class="chip" style="--c:var(--bio)"><input type="radio" name="subj" value="bio"><span>الأحياء</span></label>
+  </div>
+  <div class="fields">
+    <div>
+      <label class="label" for="lec">كم عدد المحاضرات؟</label>
+      <input type="number" id="lec" min="1" max="300" value="24" inputmode="numeric">
+    </div>
+    <div>
+      <label class="label" for="fdays">كم يوم تبي تخلصها فيه؟</label>
+      <input type="number" id="fdays" min="1" max="120" value="8" inputmode="numeric">
+    </div>
+  </div>
+  <button class="go" id="go-found" type="button">سوّي لي الجدول</button>
+  <p class="err" id="err-found" role="alert"></p>
 </section>
 
 <section class="panel" id="p-practice" role="tabpanel" hidden>
-<h2>خطة التدريب</h2>
-<p class="hint">حدد عدد الأسئلة وعدد الأيام، ونوزعها لك بالتساوي.</p>
-<div class="fields">
-<div>
-<label class="label" for="qs">كم عدد الأسئلة؟</label>
-<input type="number" id="qs" min="1" max="5000" value="300" inputmode="numeric">
-</div>
-<div>
-<label class="label" for="pdays">كم يوم؟</label>
-<input type="number" id="pdays" min="1" max="120" value="10" inputmode="numeric">
-</div>
-</div>
-<button class="go practice" id="go-practice" type="button">سوّي لي الجدول</button>
-<p class="err" id="err-practice" role="alert"></p>
+  <h2>خطة التدريب</h2>
+  <p class="hint">حدد عدد الأسئلة وعدد الأيام، ونوزعها بالتساوي.</p>
+  <div class="fields">
+    <div>
+      <label class="label" for="qs">كم عدد الأسئلة؟</label>
+      <input type="number" id="qs" min="1" max="5000" value="300" inputmode="numeric">
+    </div>
+    <div>
+      <label class="label" for="pdays">كم يوم؟</label>
+      <input type="number" id="pdays" min="1" max="120" value="10" inputmode="numeric">
+    </div>
+  </div>
+  <button class="go practice" id="go-practice" type="button">سوّي لي الجدول</button>
+  <p class="err" id="err-practice" role="alert"></p>
 </section>
 
 <section id="result" hidden aria-live="polite"></section>
 
 <section class="telegram-area">
-<button class="telegram-toggle" id="telegram-toggle" type="button" aria-expanded="false" aria-controls="telegram-list">
-قنوات التليجرام <span class="arrow">⌄</span>
-</button>
-<div class="telegram-list" id="telegram-list">
-<div class="telegram-list-inner">
-<div class="channel-grid">
-<a class="channel-link" href="https://t.me/uloost" target="_blank" rel="noopener noreferrer">
-<span><strong>القناة الرئيسية</strong><small>t.me/uloost</small></span><span class="tg-icon">✈</span>
-</a>
-<a class="channel-link" href="https://t.me/w_9lr" target="_blank" rel="noopener noreferrer">
-<span><strong>قناة الكويزات</strong><small>@w_9lr</small></span><span class="tg-icon">✈</span>
-</a>
-<a class="channel-link" href="https://t.me/w_1lr" target="_blank" rel="noopener noreferrer">
-<span><strong>قناة الملفات والملخصات</strong><small>@w_1lr</small></span><span class="tg-icon">✈</span>
-</a>
-<a class="channel-link" href="https://t.me/w_2lr" target="_blank" rel="noopener noreferrer">
-<span><strong>مجموعة المناقشة</strong><small>@w_2lr</small></span><span class="tg-icon">✈</span>
-</a>
-</div>
-</div>
-</div>
+  <button class="telegram-toggle" id="telegram-toggle" type="button" aria-expanded="false" aria-controls="telegram-list">
+    قنوات التليجرام <span class="telegram-arrow">⌄</span>
+  </button>
+  <div class="telegram-list" id="telegram-list">
+    <div class="telegram-list-inner">
+      <div class="channel-grid">
+        <a class="channel-link" href="https://t.me/uloost" target="_blank" rel="noopener noreferrer">
+          <span><strong>القناة الرئيسية</strong><small>t.me/uloost</small></span><span class="tg-icon">✈</span>
+        </a>
+        <a class="channel-link" href="https://t.me/w_9lr" target="_blank" rel="noopener noreferrer">
+          <span><strong>قناة الكويزات</strong><small>@w_9lr</small></span><span class="tg-icon">✈</span>
+        </a>
+        <a class="channel-link" href="https://t.me/w_1lr" target="_blank" rel="noopener noreferrer">
+          <span><strong>قناة الملفات والملخصات</strong><small>@w_1lr</small></span><span class="tg-icon">✈</span>
+        </a>
+        <a class="channel-link" href="https://t.me/w_2lr" target="_blank" rel="noopener noreferrer">
+          <span><strong>مجموعة المناقشة</strong><small>@w_2lr</small></span><span class="tg-icon">✈</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="prayer">
-<h2>دعوة من القلب</h2>
-<p>
-اللهم وفّق كل طالبٍ وطالبة، واشرح صدورهم ويسّر أمورهم،
-وبارك في أوقاتهم وجهودهم، وارزقهم فهمًا وحفظًا وتوفيقًا،
-وبلّغهم أعلى الدرجات، وارزقهم ١٠٠ في التحصيلي،
-واجعل نجاحهم فرحةً لهم ولوالديهم، واكتب لهم الخير حيث كان.
-</p>
+  <h2>دعوة من القلب</h2>
+  <p>
+    اللهم وفّق كل طالبٍ وطالبة، واشرح صدورهم ويسّر أمورهم،
+    وبارك في أوقاتهم وجهودهم، وارزقهم فهمًا وحفظًا وتوفيقًا،
+    وبلّغهم أعلى الدرجات، وارزقهم ١٠٠ في التحصيلي،
+    واجعل نجاحهم فرحةً لهم ولوالديهم، واكتب لهم الخير حيث كان.
+  </p>
 </section>
 
 <section class="personal-prayer">
-<h3>دعوة خاصة</h3>
-<p>
-اللهم وفّق صاحب هذا المنبر، وافتح عليه فتوح العارفين،
-ويسّر له دراسته، وبارك له في وقته وجهده،
-وارزقه فهمًا لا ينسى، وحفظًا لا يتفلت،
-وبلّغه ١٠٠ في اختبار التحصيلي،
-واجعل هذا التفوق فرحةً له ولوالديه،
-واكتب له النجاح والتوفيق في الدنيا والآخرة.
-اللهم آمين.
-</p>
+  <h3>دعوة خاصة</h3>
+  <p>
+    اللهم وفّق صاحب هذا المنبر، وافتح عليه فتوح العارفين،
+    ويسّر له دراسته، وبارك له في وقته وجهده،
+    وارزقه فهمًا لا ينسى، وحفظًا لا يتفلت،
+    وبلّغه ١٠٠ في اختبار التحصيلي،
+    واجعل هذا التفوق فرحةً له ولوالديه،
+    واكتب له النجاح والتوفيق في الدنيا والآخرة.
+    اللهم آمين.
+  </p>
 </section>
 
 </main>
@@ -350,7 +373,6 @@ body{background:white;color:#172036}
 
 const $ = id => document.getElementById(id);
 const STORAGE_KEY = "minbar_saved_study_plan_v2";
-const fmt = n => Number(n).toLocaleString("ar-EG");
 
 const subjects = {
   math:{name:"الرياضيات",color:"--math"},
@@ -360,24 +382,26 @@ const subjects = {
 };
 
 const cheers = [
-"بداية ممتازة، أصعب خطوة هي أول يوم وانت تجاوزتها!",
-"كل محاضرة تخلصها تقربك من الهدف، كمّل!",
-"الالتزام اليوم هو درجتك بكرة.",
-"ما أحد وصل للقمة وهو متكاسل، وانت ماشي صح.",
-"يوم ورا يوم وتشوف الفرق بنفسك.",
-"تعبك اليوم راحة لك يوم الاختبار.",
-"انت أقوى مما تتخيل، لا توقف.",
-"الاستمرار أهم من الكمال، أحسنت!",
-"ثقتك بنفسك نص النجاح، والنص الثاني شغلك اليوم.",
-"خذ نفس عميق وافتخر بنفسك، يوم جديد تم إنجازه.",
-"قربت تخلص، لا تهدي السرعة الحين!",
-"حلمك يستاهل كل ساعة تذاكرها."
+  "بداية ممتازة، أصعب خطوة هي أول يوم وانت تجاوزتها!",
+  "كل محاضرة تخلصها تقربك من الهدف، كمّل!",
+  "الالتزام اليوم هو درجتك بكرة.",
+  "ما أحد وصل للقمة وهو متكاسل، وانت ماشي صح.",
+  "يوم ورا يوم وتشوف الفرق بنفسك.",
+  "تعبك اليوم راحة لك يوم الاختبار.",
+  "انت أقوى مما تتخيل، لا توقف.",
+  "الاستمرار أهم من الكمال، أحسنت!",
+  "ثقتك بنفسك نص النجاح، والنص الثاني شغلك اليوم.",
+  "خذ نفس عميق وافتخر بنفسك، يوم جديد تم إنجازه.",
+  "قربت تخلص، لا تهدي السرعة الحين!",
+  "حلمك يستاهل كل ساعة تذاكرها."
 ];
+
+const fmt = n => Number(n).toLocaleString("ar-EG");
 
 /* العد التنازلي */
 const exams = [
- {prefix:"f",start:"2027-05-27T00:00:00+03:00",end:"2027-06-01T00:00:00+03:00"},
- {prefix:"s",start:"2027-06-04T00:00:00+03:00",end:"2027-06-09T00:00:00+03:00"}
+  {prefix:"f",start:"2027-05-27T00:00:00+03:00",end:"2027-06-01T00:00:00+03:00"},
+  {prefix:"s",start:"2027-06-04T00:00:00+03:00",end:"2027-06-09T00:00:00+03:00"}
 ];
 
 function updateOneExam(exam){
@@ -385,53 +409,53 @@ function updateOneExam(exam){
   const start = Date.parse(exam.start);
   const end = Date.parse(exam.end);
   const p = exam.prefix;
-  const parts = ["days","hours","minutes","seconds"];
-
-  if(!Number.isFinite(start) || !Number.isFinite(end)){
-    $(p+"-status").textContent = "تعذر قراءة موعد الاختبار";
-    return;
-  }
+  const units = ["days","hours","minutes","seconds"];
 
   if(now >= end){
-    parts.forEach(x => $(p+"-"+x).textContent = "٠");
+    units.forEach(unit => $(p+"-"+unit).textContent = "٠");
     $(p+"-status").textContent = "انتهت الفترة";
     return;
   }
 
   if(now >= start){
-    parts.forEach(x => $(p+"-"+x).textContent = "٠");
+    units.forEach(unit => $(p+"-"+unit).textContent = "٠");
     $(p+"-status").textContent = "الفترة جارية الآن";
     return;
   }
 
-  const diff = start - now;
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  const seconds = Math.floor((diff % 60000) / 1000);
+  const diff = start-now;
+  const values = [
+    Math.floor(diff/86400000),
+    Math.floor((diff%86400000)/3600000),
+    Math.floor((diff%3600000)/60000),
+    Math.floor((diff%60000)/1000)
+  ];
 
-  $(p+"-days").textContent = fmt(days);
-  $(p+"-hours").textContent = fmt(hours);
-  $(p+"-minutes").textContent = fmt(minutes);
-  $(p+"-seconds").textContent = fmt(seconds);
+  units.forEach((unit,index)=>{
+    $(p+"-"+unit).textContent = fmt(values[index]);
+  });
   $(p+"-status").textContent = "الوقت المتبقي على بداية الاختبار";
 }
-function updateCountdowns(){exams.forEach(updateOneExam)}
+
+function updateCountdowns(){
+  exams.forEach(updateOneExam);
+}
 updateCountdowns();
-setInterval(updateCountdowns,1000);
+window.setInterval(updateCountdowns,1000);
 
 /* فتح وإغلاق الأقسام */
-$("exam-toggle").addEventListener("click",function(){
-  const open = this.getAttribute("aria-expanded") !== "true";
-  this.setAttribute("aria-expanded",String(open));
-  $("exam-list").classList.toggle("open",open);
-});
+function setupToggle(buttonId,listId){
+  const button = $(buttonId);
+  const list = $(listId);
 
-$("telegram-toggle").addEventListener("click",function(){
-  const open = this.getAttribute("aria-expanded") !== "true";
-  this.setAttribute("aria-expanded",String(open));
-  $("telegram-list").classList.toggle("open",open);
-});
+  button.addEventListener("click",()=>{
+    const isOpen = button.getAttribute("aria-expanded") !== "true";
+    button.setAttribute("aria-expanded",String(isOpen));
+    list.classList.toggle("open",isOpen);
+  });
+}
+setupToggle("exam-toggle","exam-list");
+setupToggle("telegram-toggle","telegram-list");
 
 /* التبويبات */
 function showTab(which){
@@ -444,19 +468,21 @@ function showTab(which){
 $("t-found").addEventListener("click",()=>showTab("found"));
 $("t-practice").addEventListener("click",()=>showTab("practice"));
 
-/* الحفظ والاسترجاع */
+/* التخزين */
 function savePlan(plan){
   try{
     localStorage.setItem(STORAGE_KEY,JSON.stringify(plan));
+    return true;
   }catch(error){
-    console.warn("تعذر حفظ الجدول على هذا الجهاز:",error);
+    console.warn("تعذر حفظ الخطة:",error);
+    return false;
   }
 }
 function readPlan(){
   try{
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if(!saved) return null;
-    const plan = JSON.parse(saved);
+    const data = localStorage.getItem(STORAGE_KEY);
+    if(!data) return null;
+    const plan = JSON.parse(data);
     if(!plan || !Array.isArray(plan.parts) || !Array.isArray(plan.checked)) return null;
     if(!["foundation","practice"].includes(plan.kind)) return null;
     return plan;
@@ -472,24 +498,15 @@ function clearPlan(){
 function split(total,days){
   const base = Math.floor(total/days);
   const extra = total%days;
-  let from = 1;
-  const out = [];
+  let next = 1;
+  const result = [];
 
   for(let i=0;i<days;i++){
     const count = base + (i<extra ? 1 : 0);
-    out.push({from:from,to:from+count-1,count:count});
-    from += count;
+    result.push({from:next,to:next+count-1,count});
+    next += count;
   }
-  return out;
+  return result;
 }
 
-function makeElement(tag,className,text){
-  const el = document.createElement(tag);
-  if(className) el.className = className;
-  if(text !== undefined) el.textContent = text;
-  return el;
-}
-
-/* حساب التقدم */
-function refresh(){
-  con
+/* إ
