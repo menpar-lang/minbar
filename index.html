@@ -32,6 +32,8 @@
 
 html{scroll-behavior:smooth}
 
+[hidden]{display:none!important}
+
 body{
 background:
 linear-gradient(
@@ -104,6 +106,152 @@ font-size:16px;
 box-shadow:0 5px 18px #064c8430;
 }
 
+/* قائمة مواعيد التحصيلي */
+
+.exam-area{margin-top:16px}
+
+.exam-toggle{
+width:100%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+font:inherit;
+font-size:18px;
+font-weight:800;
+color:white;
+background:linear-gradient(135deg,#172d4d,#1d3e68);
+border:1px solid #47739c;
+border-radius:15px;
+padding:14px 17px;
+cursor:pointer;
+transition:.2s;
+box-shadow:0 5px 18px #06162b30;
+}
+
+.exam-toggle:hover{background:linear-gradient(135deg,#203d63,#28517d)}
+
+.exam-toggle .exam-arrow{transition:transform .28s}
+
+.exam-toggle[aria-expanded="true"] .exam-arrow{
+transform:rotate(180deg);
+}
+
+.exam-toggle-label{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.exam-calendar-icon{
+display:grid;
+place-items:center;
+width:35px;
+height:35px;
+border-radius:11px;
+background:#ffffff20;
+font-size:19px;
+}
+
+.exam-list{
+display:grid;
+grid-template-rows:0fr;
+opacity:0;
+transition:grid-template-rows .32s ease,opacity .25s ease;
+}
+
+.exam-list.open{
+grid-template-rows:1fr;
+opacity:1;
+}
+
+.exam-list-inner{
+overflow:hidden;
+min-height:0;
+}
+
+.exam-content{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;
+padding-top:12px;
+}
+
+.exam-card{
+background:linear-gradient(145deg,#14233d,#101b30);
+border:1px solid #344d70;
+border-radius:15px;
+padding:15px;
+min-width:0;
+box-shadow:0 6px 20px #00000020;
+}
+
+.exam-card.first{border-top:3px solid #45c4f5}
+.exam-card.second{border-top:3px solid #8b83ff}
+
+.exam-card-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px;
+margin-bottom:4px;
+}
+
+.exam-card h3{
+font-size:19px;
+margin:0;
+font-weight:800;
+}
+
+.exam-date{
+font-size:13px;
+color:var(--muted);
+font-weight:700;
+margin-bottom:12px;
+}
+
+.countdown{
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:6px;
+}
+
+.time-box{
+background:#0a1426;
+border:1px solid #2b4161;
+border-radius:10px;
+text-align:center;
+padding:8px 2px;
+min-width:0;
+}
+
+.time-number{
+display:block;
+font-size:clamp(19px,4vw,25px);
+font-weight:800;
+line-height:1.4;
+color:#8cddff;
+font-variant-numeric:tabular-nums;
+}
+
+.second .time-number{color:#b4adff}
+
+.time-label{
+display:block;
+font-size:12px;
+color:var(--muted);
+font-weight:700;
+}
+
+.exam-status{
+margin:10px 0 0;
+font-size:13px;
+font-weight:700;
+color:#a8c9e8;
+text-align:center;
+min-height:22px;
+}
+
 /* التبويبات */
 
 .tabs{
@@ -114,7 +262,7 @@ background:var(--surface);
 border:1px solid var(--line);
 border-radius:16px;
 padding:6px;
-margin-top:-32px;
+margin-top:16px;
 position:relative;
 }
 
@@ -531,6 +679,9 @@ padding:24px 0 20px;
 .brand-copy p{font-size:13px}
 .free-badge{padding:8px 11px;font-size:14px}
 .panel{padding:16px}
+.exam-content{grid-template-columns:1fr}
+.exam-card{padding:13px}
+.exam-toggle{font-size:16px}
 }
 
 /* PDF */
@@ -539,7 +690,7 @@ padding:24px 0 20px;
 body{background:white;color:#172036}
 
 .hero,.tabs,.panel,.go,.done,.err,footer,
-.telegram-area,.prayer,.personal-prayer{
+.telegram-area,.prayer,.personal-prayer,.exam-area{
 display:none!important;
 }
 
@@ -571,6 +722,80 @@ break-inside:avoid;
 </header>
 
 <main class="wrap">
+
+<!-- قائمة مواعيد التحصيلي -->
+
+<section class="exam-area">
+<button class="exam-toggle" id="exam-toggle" type="button" aria-expanded="false" aria-controls="exam-list">
+  <span class="exam-toggle-label">
+    <span class="exam-calendar-icon">📅</span>
+    مواعيد اختبار التحصيلي
+  </span>
+  <span class="exam-arrow">⌄</span>
+</button>
+
+<div class="exam-list" id="exam-list">
+<div class="exam-list-inner">
+<div class="exam-content">
+
+<article class="exam-card first">
+  <div class="exam-card-head">
+    <h3>الفترة الأولى</h3>
+  </div>
+  <div class="exam-date">27 مايو – 31 مايو 2027</div>
+
+  <div class="countdown" aria-label="العد التنازلي للفترة الأولى">
+    <div class="time-box">
+      <span class="time-number" id="first-days">--</span>
+      <span class="time-label">يوم</span>
+    </div>
+    <div class="time-box">
+      <span class="time-number" id="first-hours">--</span>
+      <span class="time-label">ساعة</span>
+    </div>
+    <div class="time-box">
+      <span class="time-number" id="first-minutes">--</span>
+      <span class="time-label">دقيقة</span>
+    </div>
+    <div class="time-box">
+      <span class="time-number" id="first-seconds">--</span>
+      <span class="time-label">ثانية</span>
+    </div>
+  </div>
+  <p class="exam-status" id="first-status">جارٍ حساب الوقت المتبقي...</p>
+</article>
+
+<article class="exam-card second">
+  <div class="exam-card-head">
+    <h3>الفترة الثانية</h3>
+  </div>
+  <div class="exam-date">4 يونيو – 8 يونيو 2027</div>
+
+  <div class="countdown" aria-label="العد التنازلي للفترة الثانية">
+    <div class="time-box">
+      <span class="time-number" id="second-days">--</span>
+      <span class="time-label">يوم</span>
+    </div>
+    <div class="time-box">
+      <span class="time-number" id="second-hours">--</span>
+      <span class="time-label">ساعة</span>
+    </div>
+    <div class="time-box">
+      <span class="time-number" id="second-minutes">--</span>
+      <span class="time-label">دقيقة</span>
+    </div>
+    <div class="time-box">
+      <span class="time-number" id="second-seconds">--</span>
+      <span class="time-label">ثانية</span>
+    </div>
+  </div>
+  <p class="exam-status" id="second-status">جارٍ حساب الوقت المتبقي...</p>
+</article>
+
+</div>
+</div>
+</div>
+</section>
 
 <div class="tabs" role="tablist">
 <button class="tab" id="t-found" type="button" aria-selected="true">تأسيس</button>
@@ -712,6 +937,78 @@ const $ = id => document.getElementById(id);
 const fmt = n => Number(n).toLocaleString("ar-EG");
 const STORAGE_KEY = "minbar_saved_study_plan_v2";
 
+/* العد التنازلي لمواعيد التحصيلي */
+
+const examDates = [
+{
+prefix:"first",
+start:new Date("2027-05-27T00:00:00+03:00").getTime(),
+end:new Date("2027-06-01T00:00:00+03:00").getTime()
+},
+{
+prefix:"second",
+start:new Date("2027-06-04T00:00:00+03:00").getTime(),
+end:new Date("2027-06-09T00:00:00+03:00").getTime()
+}
+];
+
+function updateCountdown(exam){
+
+const now = Date.now();
+const prefix = exam.prefix;
+const status = $(prefix+"-status");
+
+if(now>=exam.end){
+["days","hours","minutes","seconds"].forEach(part=>{
+$(prefix+"-"+part).textContent="٠";
+});
+status.textContent="انتهت الفترة";
+return;
+}
+
+if(now>=exam.start){
+["days","hours","minutes","seconds"].forEach(part=>{
+$(prefix+"-"+part).textContent="٠";
+});
+status.textContent="الفترة جارية الآن";
+return;
+}
+
+const distance = exam.start-now;
+
+const days = Math.floor(distance/86400000);
+const hours = Math.floor((distance%86400000)/3600000);
+const minutes = Math.floor((distance%3600000)/60000);
+const seconds = Math.floor((distance%60000)/1000);
+
+$(prefix+"-days").textContent=fmt(days);
+$(prefix+"-hours").textContent=fmt(hours);
+$(prefix+"-minutes").textContent=fmt(minutes);
+$(prefix+"-seconds").textContent=fmt(seconds);
+
+status.textContent="الوقت المتبقي على بداية الاختبار";
+}
+
+function updateAllCountdowns(){
+examDates.forEach(updateCountdown);
+}
+
+updateAllCountdowns();
+setInterval(updateAllCountdowns,1000);
+
+/* فتح وإغلاق قائمة المواعيد */
+
+$("exam-toggle").onclick=function(){
+
+const open=this.getAttribute("aria-expanded")!=="true";
+
+this.setAttribute("aria-expanded",String(open));
+$("exam-list").classList.toggle("open",open);
+
+};
+
+/* بيانات المواد */
+
 const subjects = {
 math:{name:"الرياضيات",color:"--math"},
 phys:{name:"الفيزياء",color:"--phys"},
@@ -766,290 +1063,4 @@ localStorage.removeItem(STORAGE_KEY);
 /* توزيع المهام */
 
 function split(total,days){
-const base = Math.floor(total/days);
-const extra = total%days;
-let from = 1;
-const out = [];
-
-for(let i=0;i<days;i++){
-const count = base+(i<extra?1:0);
-
-out.push({
-from:from,
-to:from+count-1,
-count:count
-});
-
-from+=count;
-}
-
-return out;
-}
-
-/* حساب التقدم */
-
-function refresh(days){
-const done = days.filter(day=>
-day.querySelector("input").checked
-).length;
-
-const remaining = days.length-done;
-const percent = Math.round(done/days.length*100);
-
-$("sum-line").textContent =
-"أنجزت "+fmt(done)+" من "+fmt(days.length)+" يوم";
-
-$("bar").style.width = percent+"%";
-$("percent").textContent = percent+"% إنجاز";
-$("remaining").textContent = "متبقي "+fmt(remaining)+" يوم";
-$("finish").hidden = done!==days.length;
-}
-
-/* حفظ علامات الإنجاز */
-
-function saveChecks(days){
-const plan = readPlan();
-if(!plan)return;
-
-plan.checked = days.map(day=>
-day.querySelector("input").checked
-);
-
-savePlan(plan);
-}
-
-/* عرض الجدول */
-
-function render(plan,scroll=true){
-
-const kind = plan.kind;
-const title = plan.title;
-const color = plan.color;
-const parts = plan.parts;
-
-let html =
-'<div class="summary" style="--subj:var('+color+')">'+
-'<h3></h3>'+
-'<p id="sum-line"></p>'+
-'<div class="bar"><i id="bar"></i></div>'+
-'<div class="progress-details">'+
-'<span id="percent">0% إنجاز</span>'+
-'<span id="remaining"></span>'+
-'</div>'+
-'</div>'+
-'<button class="go pdf" id="pdf-btn" type="button">حفظ الجدول PDF</button>'+
-'<button class="go new-plan" id="new-plan-btn" type="button">إنشاء جدول جديد</button>'+
-'<div class="days">';
-
-parts.forEach((p,i)=>{
-
-let task,sub;
-
-if(kind==="found"){
-task = p.count===1
-?"المحاضرة "+fmt(p.from)
-:"من المحاضرة "+fmt(p.from)+" إلى المحاضرة "+fmt(p.to);
-
-sub = fmt(p.count)+" محاضرة";
-
-}else{
-task = fmt(p.count)+" سؤال";
-sub = "من السؤال "+fmt(p.from)+" إلى "+fmt(p.to);
-}
-
-const checked = plan.checked && plan.checked[i]===true;
-
-html +=
-'<article class="day '+(checked?'is-done':'')+'" data-i="'+i+'" style="--subj:var('+color+')">'+
-'<div class="day-body">'+
-'<div class="day-top">'+
-'<span class="day-no">اليوم '+fmt(i+1)+'</span>'+
-'<label class="done"><input type="checkbox" '+(checked?'checked':'')+'> أنجزت اليوم</label>'+
-'</div>'+
-'<div class="task">'+task+'<small>'+sub+'</small></div>'+
-'</div>'+
-'<div class="cheer">'+cheers[i%cheers.length]+'</div>'+
-'</article>';
-});
-
-html += '</div>'+
-'<div class="finish" id="finish" hidden>'+
-'مبروك! خلصت الخطة كاملة، انت بطل والتحصيلي ينتظرك بثقة.'+
-'</div>';
-
-$("result").innerHTML = html;
-$("result").hidden = false;
-
-/* عنوان الجدول كنص */
-
-$("result").querySelector(".summary h3").textContent = title;
-
-/* طباعة PDF */
-
-$("pdf-btn").onclick = () => window.print();
-
-/* إنشاء جدول جديد */
-
-$("new-plan-btn").onclick = () => {
-const confirmed = confirm("هل تريد حذف الجدول الحالي والبدء بجدول جديد؟");
-if(!confirmed)return;
-
-clearPlan();
-$("result").hidden = true;
-$("result").innerHTML = "";
-window.scrollTo({top:0,behavior:"smooth"});
-};
-
-/* متابعة الإنجاز */
-
-const boxes = [...$("result").querySelectorAll(".day")];
-
-boxes.forEach(day=>{
-day.querySelector("input").onchange = () => {
-day.classList.toggle(
-"is-done",
-day.querySelector("input").checked
-);
-
-refresh(boxes);
-saveChecks(boxes);
-};
-});
-
-refresh(boxes);
-
-if(scroll){
-$("result").scrollIntoView({behavior:"smooth"});
-}
-}
-
-/* إنشاء وحفظ خطة */
-
-function createPlan(kind,title,color,parts){
-
-const previous = readPlan();
-
-if(previous && previous.parts && previous.parts.length){
-const confirmed = confirm(
-"سيتم استبدال جدولك الحالي بجدول جديد. هل تريد المتابعة؟"
-);
-
-if(!confirmed)return;
-}
-
-const plan = {
-kind:kind,
-title:title,
-color:color,
-parts:parts,
-checked:parts.map(()=>false)
-};
-
-savePlan(plan);
-render(plan);
-}
-
-/* التنقل بين الأقسام */
-
-function showTab(name){
-const isFound = name==="found";
-
-$("p-found").hidden = !isFound;
-$("p-practice").hidden = isFound;
-
-$("t-found").setAttribute("aria-selected",String(isFound));
-$("t-practice").setAttribute("aria-selected",String(!isFound));
-}
-
-$("t-found").onclick = () => showTab("found");
-$("t-practice").onclick = () => showTab("practice");
-
-/* إنشاء جدول التأسيس */
-
-$("go-found").onclick = () => {
-
-const lec = Number($("lec").value);
-const days = Number($("fdays").value);
-
-const selected = document.querySelector('input[name="subj"]:checked');
-
-if(
-!Number.isInteger(lec)||lec<1||lec>300||
-!Number.isInteger(days)||days<1||days>120||
-!selected
-){
-$("err-found").textContent =
-"أدخل عدد المحاضرات من ١ إلى ٣٠٠ وعدد الأيام من ١ إلى ١٢٠.";
-return;
-}
-
-$("err-found").textContent = "";
-
-const subject = subjects[selected.value];
-
-createPlan(
-"found",
-"تأسيس "+subject.name+": "+fmt(lec)+" محاضرة في "+fmt(days)+" يوم",
-subject.color,
-split(lec,days)
-);
-};
-
-/* إنشاء جدول التدريب */
-
-$("go-practice").onclick = () => {
-
-const q = Number($("qs").value);
-const days = Number($("pdays").value);
-
-if(
-!Number.isInteger(q)||q<1||q>5000||
-!Number.isInteger(days)||days<1||days>120
-){
-$("err-practice").textContent =
-"أدخل عدد الأسئلة من ١ إلى ٥٠٠٠ وعدد الأيام من ١ إلى ١٢٠.";
-return;
-}
-
-$("err-practice").textContent = "";
-
-createPlan(
-"practice",
-"تدريب: "+fmt(q)+" سؤال في "+fmt(days)+" يوم",
-"--practice",
-split(q,days)
-);
-};
-
-/* فتح وإغلاق قنوات التليجرام */
-
-$("telegram-toggle").onclick = function(){
-const open = this.getAttribute("aria-expanded")!=="true";
-
-this.setAttribute("aria-expanded",String(open));
-$("telegram-list").classList.toggle("open",open);
-};
-
-/* استرجاع آخر جدول محفوظ */
-
-const previousPlan = readPlan();
-
-if(
-previousPlan &&
-Array.isArray(previousPlan.parts) &&
-previousPlan.parts.length>0 &&
-previousPlan.parts.length<=120 &&
-(previousPlan.kind==="found"||previousPlan.kind==="practice") &&
-typeof previousPlan.title==="string" &&
-typeof previousPlan.color==="string" &&
-Array.isArray(previousPlan.checked) &&
-previousPlan.checked.length===previousPlan.parts.length
-){
-render(previousPlan,false);
-}
-
-})();
-</script>
-
-</body>
-</html>
+const base = Math.floor(total/days
