@@ -8,6 +8,8 @@
 <meta name="description" content="منبر التحصيلي - أنشئ جدول تأسيسك وتدريبك وتابع إنجازك بسهولة.">
 <title>منبر التحصيلي</title>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap">
+
 <style>
 :root{
   --bg:#080d1b;
@@ -24,7 +26,7 @@
   --bio:#35bd8b;
   --practice:#ec5d91;
   --subj:var(--math);
-  --font:Tahoma,Arial,sans-serif;
+  --font:"Tajawal",Arial,sans-serif;
 }
 
 *{box-sizing:border-box}
@@ -78,9 +80,7 @@ button{touch-action:manipulation}
   gap:15px;
 }
 
-.brand-copy{
-  text-align:right;
-}
+.brand-copy{text-align:right}
 
 .brand-copy h1{
   color:#08254d;
@@ -765,7 +765,7 @@ function make(tag,className,text){
   return el;
 }
 
-/* التخزين الآمن */
+/* التخزين */
 
 function savePlan(plan){
   try{
@@ -844,7 +844,7 @@ function split(total,days){
   return output;
 }
 
-/* حساب بيانات الخطة */
+/* بيانات الخطة */
 
 function getPlanTitle(plan){
   if(plan.kind === "found"){
@@ -862,7 +862,7 @@ function getPlanColor(plan){
   return "#ec5d91";
 }
 
-/* بناء الجدول دون إدخال بيانات HTML */
+/* عرض الجدول بطريقة آمنة */
 
 function render(plan,scroll=true){
 
@@ -877,7 +877,7 @@ function render(plan,scroll=true){
   summary.style.setProperty("--subj",color);
 
   const heading = make("h3","",getPlanTitle(plan));
-  const line = make("p","", "");
+  const line = make("p","","");
   const bar = make("div","bar");
   const fill = make("div","bar-fill");
   const details = make("div","progress-details");
@@ -957,7 +957,4 @@ function render(plan,scroll=true){
 
     if(checkbox.checked) card.classList.add("is-done");
 
-    checkbox.addEventListener("change",()=>{
-      card.classList.toggle("is-done",checkbox.checked);
-      updateProgress();
- 
+    checkbox.addEventListener("change
