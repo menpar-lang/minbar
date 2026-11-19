@@ -4,29 +4,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#69c9f5">
-<meta name="description" content="منبر التحصيلي - أنشئ جدول تأسيسك وتدريبك وتابع إنجازك بسهولة.">
+<meta name="theme-color" content="#70d1f5">
+<meta name="description" content="منبر التحصيلي - جداول التأسيس والتدريب للطلاب والطالبات">
 <title>منبر التحصيلي</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap">
 
 <style>
 :root{
-  --bg:#080d1b;
-  --surface:#111d35;
-  --surface2:#172746;
-  --fg:#f5f8ff;
-  --muted:#b5c5df;
-  --line:#29466b;
-  --brand:#35bdf3;
-  --brand2:#536dff;
-  --math:#398bff;
-  --phys:#a876ff;
-  --chem:#ed9142;
-  --bio:#35bd8b;
-  --practice:#ec5d91;
-  --subj:var(--math);
-  --font:"Tajawal",Arial,sans-serif;
+--bg:#080d19;
+--surface:#111d33;
+--fg:#f5f6ff;
+--muted:#a8b8d2;
+--line:#293d5b;
+--brand:#35bdf3;
+--brand2:#536dff;
+--math:#4d83ff;
+--phys:#a876ff;
+--chem:#ed9142;
+--bio:#35bd8b;
+--practice:#ec5d91;
+--subj:var(--math);
+--font:"Tajawal",Arial,sans-serif;
 }
 
 *{box-sizing:border-box}
@@ -34,435 +33,420 @@
 html{scroll-behavior:smooth}
 
 body{
-  margin:0;
-  min-height:100vh;
-  color:var(--fg);
-  font-family:var(--font);
-  font-size:16px;
-  line-height:1.7;
-  text-align:right;
-  background:
-    linear-gradient(
-      180deg,
-      #79d5ff 0%,
-      #42a9ec 13%,
-      #2167ae 29%,
-      #142f59 48%,
-      #0b172e 68%,
-      #080d1b 100%
-    );
-  background-attachment:fixed;
+background:
+linear-gradient(
+180deg,
+#83dcff 0%,
+#52b9ed 12%,
+#287ebc 27%,
+#173e70 43%,
+#102543 62%,
+#080d19 100%
+);
+background-attachment:fixed;
+color:var(--fg);
+font-family:var(--font);
+font-size:16px;
+line-height:1.7;
+margin:0;
+direction:rtl;
+text-align:right;
 }
 
-button,input{font:inherit}
+button,input{font-family:var(--font)}
 button{touch-action:manipulation}
-[hidden]{display:none!important}
 
-.wrap{
-  width:min(100% - 32px,880px);
-  margin:auto;
-}
+.wrap{max-width:880px;margin:auto;padding:0 16px}
 
-/* رأس الموقع */
+/* الرأس السماوي */
 
 .hero{
-  padding:27px 0 65px;
-  background:
-    radial-gradient(ellipse at 75% 0%,#ffffff55,transparent 55%),
-    linear-gradient(135deg,#8ce0ff,#42b5f1 55%,#347fd1);
-  border-bottom:1px solid #ffffff55;
+background:
+radial-gradient(ellipse at 70% 0%,#ffffff55,transparent 60%),
+linear-gradient(135deg,#91e2ff,#55bdf0,#348ed0);
+color:white;
+padding:27px 0 58px;
+border-bottom:1px solid #ffffff55;
 }
 
 .hero-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
 }
 
 .brand-copy{text-align:right}
 
 .brand-copy h1{
-  color:#08254d;
-  font-size:clamp(28px,6vw,43px);
-  font-weight:900;
-  margin:0;
+font-size:clamp(30px,7vw,44px);
+font-weight:800;
+color:#092b50;
+margin:0;
 }
 
 .brand-copy p{
-  color:#e9f8ff;
-  font-size:16px;
-  font-weight:700;
-  margin:3px 0 0;
+margin:5px 0 0;
+color:#eaf8ff;
+font-size:16px;
+font-weight:700;
 }
 
 .free-badge{
-  flex-shrink:0;
-  padding:9px 17px;
-  color:#07345d;
-  background:#ffffffdf;
-  border:1px solid #ffffff;
-  border-radius:30px;
-  font-weight:900;
-  font-size:16px;
-  box-shadow:0 7px 20px #064c8430;
+flex-shrink:0;
+padding:8px 16px;
+border-radius:30px;
+background:#ffffffdf;
+border:1px solid white;
+color:#123b60;
+font-weight:800;
+font-size:16px;
+box-shadow:0 5px 18px #064c8430;
 }
 
 /* التبويبات */
 
 .tabs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  padding:6px;
-  margin-top:-34px;
-  position:relative;
-  background:#101c34;
-  border:1px solid #4e85b5;
-  border-radius:17px;
-  box-shadow:0 12px 30px #00152e55;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+background:var(--surface);
+border:1px solid var(--line);
+border-radius:16px;
+padding:6px;
+margin-top:-32px;
+position:relative;
 }
 
 .tab{
-  padding:12px;
-  border:0;
-  border-radius:12px;
-  color:var(--muted);
-  background:transparent;
-  font-size:19px;
-  font-weight:900;
-  cursor:pointer;
+font:inherit;
+font-size:20px;
+font-weight:800;
+border:0;
+background:transparent;
+color:var(--muted);
+padding:12px;
+border-radius:11px;
+cursor:pointer;
+transition:.2s;
 }
 
 .tab[aria-selected="true"]{
-  color:white;
-  background:linear-gradient(110deg,#27b9ed,#536dff);
+background:var(--brand);
+color:white;
 }
 
 .tab[data-tab="practice"][aria-selected="true"]{
-  background:linear-gradient(110deg,#ed5b9b,#9b56ed);
+background:var(--practice);
 }
 
-/* البطاقات */
+/* الأقسام */
 
 .panel{
-  margin-top:17px;
-  padding:20px;
-  background:linear-gradient(145deg,#142440,#0d172c);
-  border:1px solid #31557d;
-  border-radius:18px;
-  box-shadow:0 12px 30px #0003;
+background:var(--surface);
+border:1px solid var(--line);
+border-radius:16px;
+padding:20px;
+margin-top:16px;
 }
 
-.panel h2{
-  margin:0 0 4px;
-  font-size:23px;
-}
-
-.hint{
-  margin:0 0 17px;
-  color:var(--muted);
-}
-
-.label{
-  display:block;
-  margin-bottom:8px;
-  font-weight:800;
-}
+.panel h2{margin:0 0 4px;font-size:22px}
+.hint{margin:0 0 16px;color:var(--muted)}
+.label{display:block;font-weight:700;margin-bottom:8px}
 
 .chips{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(125px,1fr));
-  gap:10px;
-  margin-bottom:18px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+gap:10px;
+margin-bottom:18px;
 }
 
 .chip{position:relative}
 
 .chip input{
-  position:absolute;
-  opacity:0;
-  width:1px;
-  height:1px;
+position:absolute;
+opacity:0;
+inset:0;
 }
 
 .chip span{
-  display:block;
-  padding:12px 8px;
-  border:2px solid var(--c);
-  border-radius:13px;
-  text-align:center;
-  color:var(--c);
-  font-weight:900;
-  font-size:17px;
-  cursor:pointer;
-  transition:.2s;
+display:block;
+text-align:center;
+font-weight:800;
+font-size:18px;
+padding:12px 8px;
+border-radius:12px;
+border:2px solid var(--c);
+color:var(--c);
+transition:.2s;
+cursor:pointer;
 }
 
 .chip input:checked+span{
-  color:white;
-  background:var(--c);
+background:var(--c);
+color:white;
 }
 
 .chip input:focus-visible+span{
-  outline:3px solid white;
-  outline-offset:3px;
+outline:3px solid white;
+outline-offset:3px;
 }
 
 .fields{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  gap:14px;
-  margin-bottom:18px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+gap:14px;
+margin-bottom:18px;
 }
 
 input[type=number]{
-  width:100%;
-  padding:11px 14px;
-  border:2px solid var(--line);
-  border-radius:12px;
-  background:#091326;
-  color:white;
-  font-size:20px;
-  font-weight:800;
-  outline:none;
+width:100%;
+font:inherit;
+font-size:20px;
+font-weight:700;
+padding:10px 14px;
+border-radius:12px;
+border:2px solid var(--line);
+background:#0c1120;
+color:var(--fg);
 }
 
 input[type=number]:focus{
-  border-color:var(--brand);
-  box-shadow:0 0 0 3px #35bdf333;
+outline:2px solid var(--brand);
+border-color:var(--brand);
 }
 
 .go{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:14px;
-  color:white;
-  background:linear-gradient(110deg,#20b9ed,#536dff);
-  font-size:19px;
-  font-weight:900;
-  cursor:pointer;
-  transition:.2s;
+font:inherit;
+font-size:19px;
+font-weight:800;
+width:100%;
+border:0;
+border-radius:14px;
+padding:14px;
+color:white;
+background:linear-gradient(135deg,var(--brand),var(--brand2));
+cursor:pointer;
+transition:.2s;
 }
 
-.go:hover{filter:brightness(1.1)}
+.go:hover{filter:brightness(1.12)}
 .go:active{transform:scale(.99)}
 
 .go.practice{
-  background:linear-gradient(110deg,#e74e91,#a34ee7);
+background:linear-gradient(135deg,#d84278,#a92d69);
 }
 
 .err{
-  min-height:1.5em;
-  margin:10px 0 0;
-  color:#ff9ab8;
-  font-weight:800;
+color:#ff7da6;
+font-weight:700;
+margin:10px 0;
+min-height:1.5em;
 }
-
-/* النتيجة والتقدم */
 
 #result[hidden]{display:none}
 
+/* ملخص الخطة */
+
 .summary{
-  margin-top:17px;
-  padding:18px 20px;
-  border-radius:17px;
-  color:white;
-  background:linear-gradient(120deg,var(--subj),#182e57);
-  border:1px solid #ffffff35;
+background:var(--subj);
+color:white;
+border-radius:16px;
+padding:18px 20px;
+margin-top:16px;
 }
 
-.summary h3{
-  margin:0 0 4px;
-  font-size:22px;
-}
-
+.summary h3{margin:0 0 4px;font-size:22px}
 .summary p{margin:0}
 
 .bar{
-  height:12px;
-  margin-top:12px;
-  overflow:hidden;
-  border-radius:30px;
-  background:#ffffff45;
+height:12px;
+border-radius:99px;
+background:#ffffff4d;
+margin-top:12px;
+overflow:hidden;
 }
 
-.bar-fill{
-  height:100%;
-  width:0;
-  border-radius:30px;
-  background:linear-gradient(90deg,#ffffff,#b7edff);
-  transition:width .3s;
+.bar i{
+display:block;
+height:100%;
+width:0;
+background:white;
+border-radius:99px;
+transition:width .4s;
 }
 
 .progress-details{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:9px;
-  font-size:14px;
-  font-weight:800;
+display:flex;
+justify-content:space-between;
+gap:10px;
+flex-wrap:wrap;
+margin-top:9px;
+font-weight:700;
+font-size:14px;
 }
 
+/* الأيام */
+
 .days{
-  display:grid;
-  gap:13px;
-  margin-top:16px;
+display:grid;
+gap:14px;
+margin-top:16px;
 }
 
 .day{
-  overflow:hidden;
-  background:linear-gradient(145deg,#152440,#0e192e);
-  border:1px solid var(--line);
-  border-radius:16px;
+background:var(--surface);
+border:1px solid var(--line);
+border-radius:16px;
+overflow:hidden;
 }
 
 .day-body{
-  display:grid;
-  gap:10px;
-  padding:16px 18px;
+padding:16px 18px;
+display:grid;
+gap:10px;
 }
 
 .day-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:12px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+flex-wrap:wrap;
 }
 
 .day-no{
-  color:var(--subj);
-  font-size:19px;
-  font-weight:900;
+font-weight:800;
+font-size:19px;
+color:var(--subj);
 }
 
-.task{
-  font-size:20px;
-  font-weight:900;
-}
+.task{font-size:20px;font-weight:700}
 
 .task small{
-  display:block;
-  color:var(--muted);
-  font-size:14px;
-  font-weight:500;
+display:block;
+font-size:15px;
+font-weight:500;
+color:var(--muted);
 }
 
 .done{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-weight:800;
-  cursor:pointer;
+display:inline-flex;
+align-items:center;
+gap:8px;
+font-weight:700;
+cursor:pointer;
 }
 
 .done input{
-  width:22px;
-  height:22px;
-  accent-color:var(--subj);
-  cursor:pointer;
+width:22px;
+height:22px;
+accent-color:var(--subj);
+cursor:pointer;
 }
 
 .cheer{
-  padding:11px 18px;
-  color:white;
-  background:var(--subj);
-  font-weight:800;
+background:var(--subj);
+color:white;
+padding:12px 18px;
+font-weight:700;
+font-size:17px;
 }
 
 .day.is-done .task{
-  opacity:.6;
-  text-decoration:line-through;
+text-decoration:line-through;
+opacity:.6;
 }
 
 .finish{
-  margin-top:16px;
-  padding:18px;
-  border-radius:16px;
-  color:white;
-  background:linear-gradient(110deg,#20b9ed,#536dff);
-  text-align:center;
-  font-size:21px;
-  font-weight:900;
+text-align:center;
+font-size:22px;
+font-weight:800;
+padding:18px;
+border-radius:16px;
+color:white;
+background:linear-gradient(135deg,var(--brand),var(--brand2));
 }
 
 .go.pdf{
-  margin-top:14px;
-  color:#10233e;
-  background:linear-gradient(110deg,#d9f4ff,#a7dfff);
+margin-top:14px;
+background:#e8eaf5;
+color:#111827;
 }
 
 .go.new-plan{
-  margin-top:10px;
-  background:#263c60;
-  border:1px solid #45638a;
+margin-top:10px;
+background:#26334d;
+color:#fff;
+border:1px solid #3b4b6b;
 }
 
-/* قنوات التليجرام */
+/* التليجرام */
 
 .telegram-area{margin:20px 0}
 
 .telegram-toggle{
-  width:100%;
-  padding:14px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  border:1px solid #4c80ac;
-  border-radius:15px;
-  color:white;
-  background:linear-gradient(110deg,#142b4c,#1b3764);
-  font-size:18px;
-  font-weight:900;
-  cursor:pointer;
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+font:inherit;
+font-size:18px;
+font-weight:800;
+color:white;
+background:#17243c;
+border:1px solid #344666;
+border-radius:15px;
+padding:14px;
+cursor:pointer;
+transition:.2s;
 }
 
-.telegram-toggle .arrow{transition:.2s}
+.telegram-toggle:hover{background:#213354}
 
-.telegram-toggle[aria-expanded="true"] .arrow{
-  transform:rotate(180deg);
+.telegram-toggle .arrow{transition:.25s}
+
+.telegram-toggle[aria-expanded=true] .arrow{
+transform:rotate(180deg);
 }
 
 .telegram-list{
-  display:grid;
-  grid-template-rows:0fr;
-  opacity:0;
-  transition:.25s;
+display:grid;
+grid-template-rows:0fr;
+opacity:0;
+transition:.28s;
 }
 
 .telegram-list.open{
-  grid-template-rows:1fr;
-  opacity:1;
+grid-template-rows:1fr;
+opacity:1;
 }
 
 .telegram-list-inner{
-  overflow:hidden;
-  min-height:0;
+overflow:hidden;
+min-height:0;
 }
 
 .channel-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:10px;
-  padding-top:12px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:10px;
+padding-top:12px;
 }
 
 .channel-link{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:13px 15px;
-  color:white;
-  text-decoration:none;
-  background:#14213a;
-  border:1px solid var(--line);
-  border-radius:13px;
-  transition:.2s;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+text-decoration:none;
+color:white;
+background:var(--surface);
+border:1px solid var(--line);
+border-radius:13px;
+padding:13px 15px;
+transition:.2s;
 }
 
 .channel-link:hover{border-color:var(--brand)}
@@ -470,89 +454,106 @@ input[type=number]:focus{
 .channel-link strong{display:block}
 
 .channel-link small{
-  display:block;
-  color:var(--muted);
-  direction:ltr;
-  text-align:right;
+display:block;
+color:var(--muted);
+direction:ltr;
+text-align:right;
 }
 
 .tg-icon{
-  display:grid;
-  place-items:center;
-  width:37px;
-  height:37px;
-  border-radius:11px;
-  background:#1d4770;
-  color:#8dd3ff;
+display:grid;
+place-items:center;
+width:37px;
+height:37px;
+border-radius:11px;
+background:#1d4770;
+color:#8dd3ff;
 }
 
 /* الأدعية */
 
-.prayer,.personal-prayer{
-  margin-top:18px;
-  padding:19px;
-  border-radius:16px;
-  text-align:center;
-  background:linear-gradient(145deg,#152846,#1a2143);
-  border:1px solid #38577f;
+.prayer{
+margin-top:22px;
+padding:19px 20px;
+border-radius:16px;
+background:linear-gradient(145deg,#151d31,#211c3b);
+border:1px solid #34365a;
+text-align:center;
 }
 
-.prayer h2,.personal-prayer h3{
-  margin:0 0 8px;
-  color:#b9eaff;
-  font-size:20px;
+.prayer h2{
+margin:0 0 8px;
+font-size:20px;
+color:#d9d5ff;
 }
 
-.prayer p,.personal-prayer p{
-  margin:0;
-  color:#e5edfa;
-  line-height:2;
+.prayer p{
+margin:0;
+color:#e5e8f5;
+font-size:16px;
+line-height:2;
+}
+
+.personal-prayer{
+margin-top:18px;
+padding:18px;
+border-radius:15px;
+background:#101a2b;
+border:1px solid #465080;
+text-align:center;
+}
+
+.personal-prayer h3{
+color:#b9b4ff;
+margin:0 0 8px;
+font-size:20px;
+}
+
+.personal-prayer p{
+color:#e5e8f5;
+margin:0;
+line-height:2;
 }
 
 footer{
-  padding:24px 0 20px;
-  color:#b4c8e2;
-  text-align:center;
-  font-size:14px;
+text-align:center;
+color:var(--muted);
+font-size:14px;
+padding:24px 0 20px;
 }
 
 /* الجوال */
 
 @media(max-width:480px){
-  .hero{padding:23px 0 59px}
-  .hero-row{gap:8px}
-  .brand-copy h1{font-size:27px}
-  .brand-copy p{font-size:12px}
-  .free-badge{padding:8px 11px;font-size:14px}
-  .panel{padding:15px}
-  .task{font-size:18px}
+.hero{padding:23px 0 56px}
+.hero-row{gap:8px}
+.brand-copy h1{font-size:27px}
+.brand-copy p{font-size:13px}
+.free-badge{padding:8px 11px;font-size:14px}
+.panel{padding:16px}
 }
 
-/* الطباعة */
+/* PDF */
 
 @media print{
-  body{
-    background:white!important;
-    color:#172036;
-  }
+body{background:white;color:#172036}
 
-  .hero,.tabs,.panel,.go,.done,.err,footer,
-  .telegram-area,.prayer,.personal-prayer{
-    display:none!important;
-  }
+.hero,.tabs,.panel,.go,.done,.err,footer,
+.telegram-area,.prayer,.personal-prayer{
+display:none!important;
+}
 
-  .summary,.cheer{
-    -webkit-print-color-adjust:exact;
-    print-color-adjust:exact;
-  }
+.summary,.cheer{
+-webkit-print-color-adjust:exact;
+print-color-adjust:exact;
+}
 
-  .day{
-    break-inside:avoid;
-    color:#172036;
-  }
+.day{
+break-inside:avoid;
+}
 
-  .day-body{color:#172036}
-  .task small{color:#555}
+.day-body{color:#172036}
+.task small{color:#555}
 }
 </style>
 </head>
@@ -560,401 +561,495 @@ footer{
 <body>
 
 <header class="hero">
-  <div class="wrap hero-row">
-    <div class="brand-copy">
-      <h1>منبر التحصيلي</h1>
-      <p>علمٌ يُتقن، وهدفٌ يُدرك</p>
-    </div>
-    <div class="free-badge">مجاني 100٪</div>
+<div class="wrap hero-row">
+  <div class="brand-copy">
+    <h1>منبر التحصيلي</h1>
+    <p>علمٌ يُتقن، وهدفٌ يُدرك</p>
   </div>
+  <div class="free-badge">مجاني 100٪</div>
+</div>
 </header>
 
 <main class="wrap">
 
-  <div class="tabs" role="tablist" aria-label="نوع الخطة">
-    <button class="tab" id="t-found" role="tab"
-      aria-selected="true" aria-controls="p-found">
-      تأسيس
-    </button>
-    <button class="tab" id="t-practice" data-tab="practice"
-      role="tab" aria-selected="false" aria-controls="p-practice">
-      تدريب
-    </button>
-  </div>
+<div class="tabs" role="tablist">
+<button class="tab" id="t-found" type="button" aria-selected="true">تأسيس</button>
+<button class="tab" id="t-practice" data-tab="practice" type="button" aria-selected="false">تدريب</button>
+</div>
 
-  <section class="panel" id="p-found" role="tabpanel">
-    <h2>خطة التأسيس</h2>
-    <p class="hint">اختر المادة وعدد المحاضرات والأيام، ونقسمها لك على الأيام.</p>
+<section class="panel" id="p-found">
+<h2>خطة التأسيس</h2>
+<p class="hint">اختر المادة وعدد المحاضرات والأيام، ونقسمها لك على الأيام.</p>
 
-    <span class="label">المادة</span>
+<span class="label">المادة</span>
+<div class="chips">
 
-    <div class="chips">
-      <label class="chip" style="--c:var(--math)">
-        <input type="radio" name="subj" value="math" checked>
-        <span>الرياضيات</span>
-      </label>
+<label class="chip" style="--c:var(--math)">
+<input type="radio" name="subj" value="math" checked>
+<span>الرياضيات</span>
+</label>
 
-      <label class="chip" style="--c:var(--phys)">
-        <input type="radio" name="subj" value="phys">
-        <span>الفيزياء</span>
-      </label>
+<label class="chip" style="--c:var(--phys)">
+<input type="radio" name="subj" value="phys">
+<span>الفيزياء</span>
+</label>
 
-      <label class="chip" style="--c:var(--chem)">
-        <input type="radio" name="subj" value="chem">
-        <span>الكيمياء</span>
-      </label>
+<label class="chip" style="--c:var(--chem)">
+<input type="radio" name="subj" value="chem">
+<span>الكيمياء</span>
+</label>
 
-      <label class="chip" style="--c:var(--bio)">
-        <input type="radio" name="subj" value="bio">
-        <span>الأحياء</span>
-      </label>
-    </div>
+<label class="chip" style="--c:var(--bio)">
+<input type="radio" name="subj" value="bio">
+<span>الأحياء</span>
+</label>
 
-    <div class="fields">
-      <div>
-        <label class="label" for="lec">كم عدد المحاضرات؟</label>
-        <input type="number" id="lec" min="1" max="300" value="24">
-      </div>
+</div>
 
-      <div>
-        <label class="label" for="fdays">كم يوم تبي تخلصها فيه؟</label>
-        <input type="number" id="fdays" min="1" max="120" value="8">
-      </div>
-    </div>
+<div class="fields">
+<div>
+<label class="label" for="lec">كم عدد المحاضرات؟</label>
+<input type="number" id="lec" min="1" max="300" value="24">
+</div>
+<div>
+<label class="label" for="fdays">كم يوم تبي تخلصها فيه؟</label>
+<input type="number" id="fdays" min="1" max="120" value="8">
+</div>
+</div>
 
-    <button class="go" id="go-found">سوّي لي الجدول</button>
-    <p class="err" id="err-found" role="status"></p>
-  </section>
+<button class="go" id="go-found" type="button">سوّي لي الجدول</button>
+<p class="err" id="err-found"></p>
+</section>
 
-  <section class="panel" id="p-practice" role="tabpanel" hidden>
-    <h2>خطة التدريب</h2>
-    <p class="hint">حدد عدد الأسئلة وعدد الأيام، ونوزعها بالتساوي.</p>
+<section class="panel" id="p-practice" hidden>
+<h2>خطة التدريب</h2>
+<p class="hint">حدد عدد الأسئلة وعدد الأيام، ونوزعها لك بالتساوي.</p>
 
-    <div class="fields">
-      <div>
-        <label class="label" for="qs">كم عدد الأسئلة؟</label>
-        <input type="number" id="qs" min="1" max="5000" value="300">
-      </div>
+<div class="fields">
+<div>
+<label class="label" for="qs">كم عدد الأسئلة؟</label>
+<input type="number" id="qs" min="1" max="5000" value="300">
+</div>
+<div>
+<label class="label" for="pdays">كم يوم؟</label>
+<input type="number" id="pdays" min="1" max="120" value="10">
+</div>
+</div>
 
-      <div>
-        <label class="label" for="pdays">كم يوم؟</label>
-        <input type="number" id="pdays" min="1" max="120" value="10">
-      </div>
-    </div>
+<button class="go practice" id="go-practice" type="button">سوّي لي الجدول</button>
+<p class="err" id="err-practice"></p>
+</section>
 
-    <button class="go practice" id="go-practice">سوّي لي الجدول</button>
-    <p class="err" id="err-practice" role="status"></p>
-  </section>
+<section id="result" hidden></section>
 
-  <section id="result" aria-live="polite" hidden></section>
+<section class="telegram-area">
+<button class="telegram-toggle" id="telegram-toggle" type="button" aria-expanded="false">
+قنوات التليجرام <span class="arrow">⌄</span>
+</button>
 
-  <section class="telegram-area">
-    <button class="telegram-toggle" id="telegram-toggle"
-      aria-expanded="false" aria-controls="telegram-list">
-      قنوات التليجرام <span class="arrow">⌄</span>
-    </button>
+<div class="telegram-list" id="telegram-list">
+<div class="telegram-list-inner">
+<div class="channel-grid">
 
-    <div class="telegram-list" id="telegram-list">
-      <div class="telegram-list-inner">
-        <div class="channel-grid">
+<a class="channel-link" href="https://t.me/uloost" target="_blank" rel="noopener noreferrer">
+<span><strong>القناة الرئيسية</strong><small>t.me/uloost</small></span>
+<span class="tg-icon">✈</span>
+</a>
 
-          <a class="channel-link" href="https://t.me/uloost"
-             target="_blank" rel="noopener noreferrer">
-            <span>
-              <strong>القناة الرئيسية</strong>
-              <small>t.me/uloost</small>
-            </span>
-            <span class="tg-icon">✈</span>
-          </a>
+<a class="channel-link" href="https://t.me/w_9lr" target="_blank" rel="noopener noreferrer">
+<span><strong>قناة الكويزات</strong><small>@w_9lr</small></span>
+<span class="tg-icon">✈</span>
+</a>
 
-          <a class="channel-link" href="https://t.me/w_9lr"
-             target="_blank" rel="noopener noreferrer">
-            <span>
-              <strong>قناة الكويزات</strong>
-              <small>@w_9lr</small>
-            </span>
-            <span class="tg-icon">✈</span>
-          </a>
+<a class="channel-link" href="https://t.me/w_1lr" target="_blank" rel="noopener noreferrer">
+<span><strong>قناة الملفات والملخصات</strong><small>@w_1lr</small></span>
+<span class="tg-icon">✈</span>
+</a>
 
-          <a class="channel-link" href="https://t.me/w_1lr"
-             target="_blank" rel="noopener noreferrer">
-            <span>
-              <strong>قناة الملفات والملخصات</strong>
-              <small>@w_1lr</small>
-            </span>
-            <span class="tg-icon">✈</span>
-          </a>
+<a class="channel-link" href="https://t.me/w_2lr" target="_blank" rel="noopener noreferrer">
+<span><strong>مجموعة المناقشة</strong><small>@w_2lr</small></span>
+<span class="tg-icon">✈</span>
+</a>
 
-          <a class="channel-link" href="https://t.me/w_2lr"
-             target="_blank" rel="noopener noreferrer">
-            <span>
-              <strong>مجموعة المناقشة</strong>
-              <small>@w_2lr</small>
-            </span>
-            <span class="tg-icon">✈</span>
-          </a>
+</div>
+</div>
+</div>
+</section>
 
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="prayer">
+<h2>دعوة من القلب</h2>
+<p>
+اللهم وفّق كل طالبٍ وطالبة، واشرح صدورهم ويسّر أمورهم،
+وبارك في أوقاتهم وجهودهم، وارزقهم فهمًا وحفظًا وتوفيقًا،
+وبلّغهم أعلى الدرجات، وارزقهم ١٠٠ في التحصيلي،
+واجعل نجاحهم فرحةً لهم ولوالديهم، واكتب لهم الخير حيث كان.
+</p>
+</section>
 
-  <section class="prayer">
-    <h2>دعوة من القلب</h2>
-    <p>
-      اللهم وفّق كل طالبٍ وطالبة، واشرح صدورهم ويسّر أمورهم،
-      وبارك في أوقاتهم وجهودهم، وارزقهم فهمًا وحفظًا وتوفيقًا،
-      وبلّغهم أعلى الدرجات، وارزقهم ١٠٠ في التحصيلي،
-      واجعل نجاحهم فرحةً لهم ولوالديهم، واكتب لهم الخير حيث كان.
-    </p>
-  </section>
-
-  <section class="personal-prayer">
-    <h3>دعوة خاصة</h3>
-    <p>
-      اللهم وفّق صاحب هذا المنبر، وافتح عليه فتوح العارفين،
-      ويسّر له دراسته، وبارك له في وقته وجهده،
-      وارزقه فهمًا لا ينسى، وحفظًا لا يتفلت،
-      وبلّغه ١٠٠ في اختبار التحصيلي،
-      واجعل هذا التفوق فرحةً له ولوالديه،
-      واكتب له النجاح والتوفيق في الدنيا والآخرة.
-      اللهم آمين.
-    </p>
-  </section>
+<section class="personal-prayer">
+<h3>دعوة خاصة</h3>
+<p>
+اللهم وفّق صاحب هذا المنبر، وافتح عليه فتوح العارفين،
+ويسّر له دراسته، وبارك له في وقته وجهده،
+وارزقه فهمًا لا ينسى، وحفظًا لا يتفلت،
+وبلّغه ١٠٠ في اختبار التحصيلي،
+واجعل هذا التفوق فرحةً له ولوالديه،
+واكتب له النجاح والتوفيق في الدنيا والآخرة.
+اللهم آمين.
+</p>
+</section>
 
 </main>
 
 <footer>منبر التحصيلي · كل يوم تنجزه يقربك من درجتك</footer>
 
 <script>
-"use strict";
-
 (function(){
 
+"use strict";
+
 const $ = id => document.getElementById(id);
-const STORAGE_KEY = "minbar_saved_study_plan_v3";
+const fmt = n => Number(n).toLocaleString("ar-EG");
+const STORAGE_KEY = "minbar_saved_study_plan_v2";
 
 const subjects = {
-  math:{name:"الرياضيات",color:"#398bff"},
-  phys:{name:"الفيزياء",color:"#a876ff"},
-  chem:{name:"الكيمياء",color:"#ed9142"},
-  bio:{name:"الأحياء",color:"#35bd8b"}
+math:{name:"الرياضيات",color:"--math"},
+phys:{name:"الفيزياء",color:"--phys"},
+chem:{name:"الكيمياء",color:"--chem"},
+bio:{name:"الأحياء",color:"--bio"}
 };
 
 const cheers = [
-  "بداية ممتازة، أصعب خطوة هي أول يوم وانت تجاوزتها!",
-  "كل محاضرة تخلصها تقربك من الهدف، كمّل!",
-  "الالتزام اليوم هو درجتك بكرة.",
-  "ما أحد وصل للقمة وهو متكاسل، وانت ماشي صح.",
-  "يوم ورا يوم وتشوف الفرق بنفسك.",
-  "تعبك اليوم راحة لك يوم الاختبار.",
-  "انت أقوى مما تتخيل، لا توقف.",
-  "الاستمرار أهم من الكمال، أحسنت!",
-  "ثقتك بنفسك نص النجاح، والنص الثاني شغلك اليوم.",
-  "خذ نفس عميق وافتخر بنفسك، يوم جديد تم إنجازه.",
-  "قربت تخلص، لا تهدي السرعة الحين!",
-  "حلمك يستاهل كل ساعة تذاكرها."
+"بداية ممتازة، أصعب خطوة هي أول يوم وانت تجاوزتها!",
+"كل محاضرة تخلصها تقربك من الهدف، كمّل!",
+"الالتزام اليوم هو درجتك بكرة.",
+"ما أحد وصل للقمة وهو متكاسل، وانت ماشي صح.",
+"يوم ورا يوم وتشوف الفرق بنفسك.",
+"تعبك اليوم راحة لك يوم الاختبار.",
+"انت أقوى مما تتخيل، لا توقف.",
+"الاستمرار أهم من الكمال، أحسنت!",
+"ثقتك بنفسك نص النجاح، والنص الثاني شغلك اليوم.",
+"خذ نفس عميق وافتخر بنفسك، يوم جديد تم إنجازه.",
+"قربت تخلص، لا تهدي السرعة الحين!",
+"حلمك يستاهل كل ساعة تذاكرها."
 ];
 
-const fmt = n => Number(n).toLocaleString("ar-EG");
-
-function make(tag,className,text){
-  const el = document.createElement(tag);
-  if(className) el.className = className;
-  if(text !== undefined) el.textContent = text;
-  return el;
-}
-
-/* التخزين */
+/* حفظ الجدول */
 
 function savePlan(plan){
-  try{
-    localStorage.setItem(STORAGE_KEY,JSON.stringify(plan));
-    return true;
-  }catch(error){
-    console.warn("تعذر حفظ الجدول على هذا الجهاز.");
-    return false;
-  }
+try{
+localStorage.setItem(STORAGE_KEY,JSON.stringify(plan));
+}catch(error){
+console.warn("تعذر حفظ الجدول:",error);
+}
 }
 
-function clearPlan(){
-  try{
-    localStorage.removeItem(STORAGE_KEY);
-  }catch(error){}
-}
+/* استرجاع الجدول */
 
 function readPlan(){
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(!raw) return null;
+try{
+const saved = localStorage.getItem(STORAGE_KEY);
+return saved ? JSON.parse(saved) : null;
+}catch(error){
+return null;
+}
+}
 
-    const data = JSON.parse(raw);
+/* حذف الجدول */
 
-    if(!data || typeof data !== "object") return null;
-    if(data.version !== 3) return null;
-    if(data.kind !== "found" && data.kind !== "practice") return null;
-
-    if(!Number.isInteger(data.total) || data.total < 1) return null;
-    if(!Number.isInteger(data.days) || data.days < 1 || data.days > 120) return null;
-
-    if(data.kind === "found"){
-      if(data.total > 300) return null;
-      if(!Object.prototype.hasOwnProperty.call(subjects,data.subject)) return null;
-    }else{
-      if(data.total > 5000) return null;
-    }
-
-    if(!Array.isArray(data.checked) || data.checked.length !== data.days) return null;
-    if(!data.checked.every(value => typeof value === "boolean")) return null;
-
-    return {
-      version:3,
-      kind:data.kind,
-      subject:data.kind === "found" ? data.subject : null,
-      total:data.total,
-      days:data.days,
-      checked:data.checked
-    };
-
-  }catch(error){
-    return null;
-  }
+function clearPlan(){
+try{
+localStorage.removeItem(STORAGE_KEY);
+}catch(error){}
 }
 
 /* توزيع المهام */
 
 function split(total,days){
-  const base = Math.floor(total/days);
-  const extra = total % days;
-  const output = [];
-  let from = 1;
+const base = Math.floor(total/days);
+const extra = total%days;
+let from = 1;
+const out = [];
 
-  for(let i=0;i<days;i++){
-    const count = base + (i < extra ? 1 : 0);
+for(let i=0;i<days;i++){
+const count = base+(i<extra?1:0);
 
-    output.push({
-      from:from,
-      to:from + count - 1,
-      count:count
-    });
+out.push({
+from:from,
+to:from+count-1,
+count:count
+});
 
-    from += count;
-  }
-
-  return output;
+from+=count;
 }
 
-/* بيانات الخطة */
-
-function getPlanTitle(plan){
-  if(plan.kind === "found"){
-    return "تأسيس " + subjects[plan.subject].name +
-      ": " + fmt(plan.total) + " محاضرة في " +
-      fmt(plan.days) + " يوم";
-  }
-
-  return "تدريب: " + fmt(plan.total) +
-    " سؤال في " + fmt(plan.days) + " يوم";
+return out;
 }
 
-function getPlanColor(plan){
-  if(plan.kind === "found") return subjects[plan.subject].color;
-  return "#ec5d91";
+/* حساب التقدم */
+
+function refresh(days){
+const done = days.filter(day=>
+day.querySelector("input").checked
+).length;
+
+const remaining = days.length-done;
+const percent = Math.round(done/days.length*100);
+
+$("sum-line").textContent =
+"أنجزت "+fmt(done)+" من "+fmt(days.length)+" يوم";
+
+$("bar").style.width = percent+"%";
+$("percent").textContent = percent+"% إنجاز";
+$("remaining").textContent = "متبقي "+fmt(remaining)+" يوم";
+$("finish").hidden = done!==days.length;
 }
 
-/* عرض الجدول بطريقة آمنة */
+/* حفظ علامات الإنجاز */
+
+function saveChecks(days){
+const plan = readPlan();
+if(!plan)return;
+
+plan.checked = days.map(day=>
+day.querySelector("input").checked
+);
+
+savePlan(plan);
+}
+
+/* عرض الجدول */
 
 function render(plan,scroll=true){
 
-  const result = $("result");
-  result.replaceChildren();
-  result.hidden = false;
+const kind = plan.kind;
+const title = plan.title;
+const color = plan.color;
+const parts = plan.parts;
 
-  const color = getPlanColor(plan);
-  const parts = split(plan.total,plan.days);
+let html =
+'<div class="summary" style="--subj:var('+color+')">'+
+'<h3></h3>'+
+'<p id="sum-line"></p>'+
+'<div class="bar"><i id="bar"></i></div>'+
+'<div class="progress-details">'+
+'<span id="percent">0% إنجاز</span>'+
+'<span id="remaining"></span>'+
+'</div>'+
+'</div>'+
+'<button class="go pdf" id="pdf-btn" type="button">حفظ الجدول PDF</button>'+
+'<button class="go new-plan" id="new-plan-btn" type="button">إنشاء جدول جديد</button>'+
+'<div class="days">';
 
-  const summary = make("div","summary");
-  summary.style.setProperty("--subj",color);
+parts.forEach((p,i)=>{
 
-  const heading = make("h3","",getPlanTitle(plan));
-  const line = make("p","","");
-  const bar = make("div","bar");
-  const fill = make("div","bar-fill");
-  const details = make("div","progress-details");
-  const percent = make("span","","0% إنجاز");
-  const remaining = make("span","","");
+let task,sub;
 
-  bar.appendChild(fill);
-  details.append(percent,remaining);
-  summary.append(heading,line,bar,details);
+if(kind==="found"){
+task = p.count===1
+?"المحاضرة "+fmt(p.from)
+:"من المحاضرة "+fmt(p.from)+" إلى المحاضرة "+fmt(p.to);
 
-  const pdfButton = make("button","go pdf","حفظ الجدول PDF");
-  pdfButton.type = "button";
-  pdfButton.addEventListener("click",()=>window.print());
+sub = fmt(p.count)+" محاضرة";
 
-  const newButton = make("button","go new-plan","إنشاء جدول جديد");
-  newButton.type = "button";
+}else{
+task = fmt(p.count)+" سؤال";
+sub = "من السؤال "+fmt(p.from)+" إلى "+fmt(p.to);
+}
 
-  newButton.addEventListener("click",()=>{
-    const confirmed = window.confirm(
-      "هل تريد حذف الجدول الحالي والبدء بجدول جديد؟"
-    );
+const checked = plan.checked && plan.checked[i]===true;
 
-    if(!confirmed) return;
+html +=
+'<article class="day '+(checked?'is-done':'')+'" data-i="'+i+'" style="--subj:var('+color+')">'+
+'<div class="day-body">'+
+'<div class="day-top">'+
+'<span class="day-no">اليوم '+fmt(i+1)+'</span>'+
+'<label class="done"><input type="checkbox" '+(checked?'checked':'')+'> أنجزت اليوم</label>'+
+'</div>'+
+'<div class="task">'+task+'<small>'+sub+'</small></div>'+
+'</div>'+
+'<div class="cheer">'+cheers[i%cheers.length]+'</div>'+
+'</article>';
+});
 
-    clearPlan();
-    result.replaceChildren();
-    result.hidden = true;
-    window.scrollTo({top:0,behavior:"smooth"});
-  });
+html += '</div>'+
+'<div class="finish" id="finish" hidden>'+
+'مبروك! خلصت الخطة كاملة، انت بطل والتحصيلي ينتظرك بثقة.'+
+'</div>';
 
-  const daysContainer = make("div","days");
-  const cards = [];
+$("result").innerHTML = html;
+$("result").hidden = false;
 
-  parts.forEach((part,index)=>{
+/* عنوان الجدول كنص */
 
-    let taskText;
-    let subText;
+$("result").querySelector(".summary h3").textContent = title;
 
-    if(plan.kind === "found"){
-      taskText = part.count === 1
-        ? "المحاضرة " + fmt(part.from)
-        : "من المحاضرة " + fmt(part.from) +
-          " إلى المحاضرة " + fmt(part.to);
+/* طباعة PDF */
 
-      subText = fmt(part.count) + " محاضرة";
+$("pdf-btn").onclick = () => window.print();
 
-    }else{
-      taskText = fmt(part.count) + " سؤال";
-      subText = "من السؤال " + fmt(part.from) +
-        " إلى " + fmt(part.to);
-    }
+/* إنشاء جدول جديد */
 
-    const card = make("article","day");
-    card.style.setProperty("--subj",color);
+$("new-plan-btn").onclick = () => {
+const confirmed = confirm("هل تريد حذف الجدول الحالي والبدء بجدول جديد؟");
+if(!confirmed)return;
 
-    const body = make("div","day-body");
-    const top = make("div","day-top");
-    const dayNumber = make("span","day-no","اليوم " + fmt(index+1));
+clearPlan();
+$("result").hidden = true;
+$("result").innerHTML = "";
+window.scrollTo({top:0,behavior:"smooth"});
+};
 
-    const label = make("label","done");
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = plan.checked[index] === true;
+/* متابعة الإنجاز */
 
-    const labelText = make("span","","أنجزت اليوم");
-    label.append(checkbox,labelText);
+const boxes = [...$("result").querySelectorAll(".day")];
 
-    const task = make("div","task",taskText);
-    const small = make("small","",subText);
-    task.appendChild(small);
+boxes.forEach(day=>{
+day.querySelector("input").onchange = () => {
+day.classList.toggle(
+"is-done",
+day.querySelector("input").checked
+);
 
-    const cheer = make("div","cheer",cheers[index % cheers.length]);
+refresh(boxes);
+saveChecks(boxes);
+};
+});
 
-    top.append(dayNumber,label);
-    body.append(top,task);
-    card.append(body,cheer);
+refresh(boxes);
 
-    if(checkbox.checked) card.classList.add("is-done");
+if(scroll){
+$("result").scrollIntoView({behavior:"smooth"});
+}
+}
 
-    checkbox.addEventListener("change
+/* إنشاء وحفظ خطة */
+
+function createPlan(kind,title,color,parts){
+
+const previous = readPlan();
+
+if(previous && previous.parts && previous.parts.length){
+const confirmed = confirm(
+"سيتم استبدال جدولك الحالي بجدول جديد. هل تريد المتابعة؟"
+);
+
+if(!confirmed)return;
+}
+
+const plan = {
+kind:kind,
+title:title,
+color:color,
+parts:parts,
+checked:parts.map(()=>false)
+};
+
+savePlan(plan);
+render(plan);
+}
+
+/* التنقل بين الأقسام */
+
+function showTab(name){
+const isFound = name==="found";
+
+$("p-found").hidden = !isFound;
+$("p-practice").hidden = isFound;
+
+$("t-found").setAttribute("aria-selected",String(isFound));
+$("t-practice").setAttribute("aria-selected",String(!isFound));
+}
+
+$("t-found").onclick = () => showTab("found");
+$("t-practice").onclick = () => showTab("practice");
+
+/* إنشاء جدول التأسيس */
+
+$("go-found").onclick = () => {
+
+const lec = Number($("lec").value);
+const days = Number($("fdays").value);
+
+const selected = document.querySelector('input[name="subj"]:checked');
+
+if(
+!Number.isInteger(lec)||lec<1||lec>300||
+!Number.isInteger(days)||days<1||days>120||
+!selected
+){
+$("err-found").textContent =
+"أدخل عدد المحاضرات من ١ إلى ٣٠٠ وعدد الأيام من ١ إلى ١٢٠.";
+return;
+}
+
+$("err-found").textContent = "";
+
+const subject = subjects[selected.value];
+
+createPlan(
+"found",
+"تأسيس "+subject.name+": "+fmt(lec)+" محاضرة في "+fmt(days)+" يوم",
+subject.color,
+split(lec,days)
+);
+};
+
+/* إنشاء جدول التدريب */
+
+$("go-practice").onclick = () => {
+
+const q = Number($("qs").value);
+const days = Number($("pdays").value);
+
+if(
+!Number.isInteger(q)||q<1||q>5000||
+!Number.isInteger(days)||days<1||days>120
+){
+$("err-practice").textContent =
+"أدخل عدد الأسئلة من ١ إلى ٥٠٠٠ وعدد الأيام من ١ إلى ١٢٠.";
+return;
+}
+
+$("err-practice").textContent = "";
+
+createPlan(
+"practice",
+"تدريب: "+fmt(q)+" سؤال في "+fmt(days)+" يوم",
+"--practice",
+split(q,days)
+);
+};
+
+/* فتح وإغلاق قنوات التليجرام */
+
+$("telegram-toggle").onclick = function(){
+const open = this.getAttribute("aria-expanded")!=="true";
+
+this.setAttribute("aria-expanded",String(open));
+$("telegram-list").classList.toggle("open",open);
+};
+
+/* استرجاع آخر جدول محفوظ */
+
+const previousPlan = readPlan();
+
+if(
+previousPlan &&
+Array.isArray(previousPlan.parts) &&
+previousPlan.parts.length>0 &&
+previousPlan.parts.length<=120 &&
+(previousPlan.kind==="found"||previousPlan.kind==="practice") &&
+typeof previousPlan.title==="string" &&
+typeof previousPlan.color==="string" &&
+Array.isArray(previousPlan.checked) &&
+previousPlan.checked.length===previousPlan.parts.length
+){
+render(previousPlan,false);
+}
+
+})();
+</script>
+
+</body>
+</html>
