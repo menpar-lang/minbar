@@ -37,43 +37,37 @@ direction:rtl;
 text-align:right
 }
 .wrap{max-width:880px;margin:auto;padding:0 16px}
+
 .hero{
 background:
 radial-gradient(ellipse at 50% 0%,#35305f55,transparent 65%),
 linear-gradient(135deg,#080a10,#141a2d,#24204a);
 color:white;
-padding:28px 0 58px;
+padding:34px 0 58px;
 text-align:center;
 border-bottom:1px solid #303958
 }
 .brand-strip{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:18px;
 max-width:620px;
 margin:auto;
-padding:17px 20px;
+padding:20px 15px;
 background:#ffffff0d;
 border:1px solid #ffffff24;
 border-radius:22px;
 box-shadow:0 12px 35px #0003
 }
-.brand-logo{
-width:105px;
-height:105px;
-object-fit:contain;
-background:transparent;
-border-radius:12px;
-padding:0;
-filter:drop-shadow(0 3px 12px #0005)
-}
 .brand-copy h1{
-font-size:clamp(29px,7vw,43px);
+font-size:clamp(32px,7vw,46px);
 font-weight:800;
-margin:0
+margin:0;
+letter-spacing:.3px
 }
-.brand-copy p{margin:7px 0 0;color:#cbd2ea}
+.brand-copy p{
+margin:7px 0 0;
+color:#cbd2ea;
+font-size:17px
+}
+
 .tabs{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -97,8 +91,14 @@ border-radius:11px;
 cursor:pointer;
 transition:.2s
 }
-.tab[aria-selected="true"]{background:var(--brand);color:white}
-.tab[data-tab="practice"][aria-selected="true"]{background:var(--practice)}
+.tab[aria-selected="true"]{
+background:var(--brand);
+color:white
+}
+.tab[data-tab="practice"][aria-selected="true"]{
+background:var(--practice)
+}
+
 .panel{
 background:var(--surface);
 border:1px solid var(--line);
@@ -109,6 +109,7 @@ margin-top:16px
 .panel h2{margin:0 0 4px;font-size:22px}
 .hint{margin:0 0 16px;color:var(--muted)}
 .label{display:block;font-weight:700;margin-bottom:8px}
+
 .chips{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
@@ -128,8 +129,15 @@ border:2px solid var(--c);
 color:var(--c);
 transition:.2s
 }
-.chip input:checked+span{background:var(--c);color:white}
-.chip input:focus-visible+span{outline:3px solid white;outline-offset:3px}
+.chip input:checked+span{
+background:var(--c);
+color:white
+}
+.chip input:focus-visible+span{
+outline:3px solid white;
+outline-offset:3px
+}
+
 .fields{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
@@ -147,6 +155,7 @@ border:2px solid var(--line);
 background:#0c1120;
 color:var(--fg)
 }
+
 .go{
 font:inherit;
 font-size:19px;
@@ -160,11 +169,23 @@ background:linear-gradient(135deg,var(--brand),var(--brand2));
 cursor:pointer;
 transition:.2s
 }
-.go:hover{filter:brightness(1.12);transform:translateY(-2px)}
+.go:hover{
+filter:brightness(1.12);
+transform:translateY(-2px)
+}
 .go:active{transform:scale(.99)}
-.go.practice{background:linear-gradient(135deg,#d84278,#a92d69)}
-.err{color:#ff7da6;font-weight:700;margin:10px 0;min-height:1.5em}
+.go.practice{
+background:linear-gradient(135deg,#d84278,#a92d69)
+}
+.err{
+color:#ff7da6;
+font-weight:700;
+margin:10px 0;
+min-height:1.5em
+}
+
 #result[hidden]{display:none}
+
 .summary{
 background:var(--subj);
 color:white;
@@ -174,6 +195,7 @@ margin-top:16px
 }
 .summary h3{margin:0 0 4px;font-size:22px}
 .summary p{margin:0}
+
 .bar{
 height:12px;
 border-radius:99px;
@@ -198,14 +220,23 @@ margin-top:9px;
 font-weight:700;
 font-size:14px
 }
-.days{display:grid;gap:14px;margin-top:16px}
+
+.days{
+display:grid;
+gap:14px;
+margin-top:16px
+}
 .day{
 background:var(--surface);
 border:1px solid var(--line);
 border-radius:16px;
 overflow:hidden
 }
-.day-body{padding:16px 18px;display:grid;gap:10px}
+.day-body{
+padding:16px 18px;
+display:grid;
+gap:10px
+}
 .day-top{
 display:flex;
 align-items:center;
@@ -213,7 +244,11 @@ justify-content:space-between;
 gap:12px;
 flex-wrap:wrap
 }
-.day-no{font-weight:800;font-size:19px;color:var(--subj)}
+.day-no{
+font-weight:800;
+font-size:19px;
+color:var(--subj)
+}
 .task{font-size:20px;font-weight:700}
 .task small{
 display:block;
@@ -228,7 +263,11 @@ gap:8px;
 font-weight:700;
 cursor:pointer
 }
-.done input{width:22px;height:22px;accent-color:var(--subj)}
+.done input{
+width:22px;
+height:22px;
+accent-color:var(--subj)
+}
 .cheer{
 background:var(--subj);
 color:white;
@@ -236,7 +275,10 @@ padding:12px 18px;
 font-weight:700;
 font-size:17px
 }
-.day.is-done .task{text-decoration:line-through;opacity:.6}
+.day.is-done .task{
+text-decoration:line-through;
+opacity:.6
+}
 .finish{
 text-align:center;
 font-size:22px;
@@ -246,13 +288,19 @@ border-radius:16px;
 color:white;
 background:linear-gradient(135deg,var(--brand),var(--brand2))
 }
-.go.pdf{margin-top:14px;background:#e8eaf5;color:#111827}
+
+.go.pdf{
+margin-top:14px;
+background:#e8eaf5;
+color:#111827
+}
 .go.new-plan{
 margin-top:10px;
 background:#26334d;
 color:#fff;
 border:1px solid #3b4b6b
 }
+
 .telegram-area{margin:20px 0}
 .telegram-toggle{
 width:100%;
@@ -271,17 +319,28 @@ padding:14px;
 cursor:pointer;
 transition:.2s
 }
-.telegram-toggle:hover{background:#213354;transform:scale(1.015)}
+.telegram-toggle:hover{
+background:#213354;
+transform:scale(1.015)
+}
 .telegram-toggle .arrow{transition:.25s}
-.telegram-toggle[aria-expanded=true] .arrow{transform:rotate(180deg)}
+.telegram-toggle[aria-expanded=true] .arrow{
+transform:rotate(180deg)
+}
 .telegram-list{
 display:grid;
 grid-template-rows:0fr;
 opacity:0;
 transition:.28s
 }
-.telegram-list.open{grid-template-rows:1fr;opacity:1}
-.telegram-list-inner{overflow:hidden;min-height:0}
+.telegram-list.open{
+grid-template-rows:1fr;
+opacity:1
+}
+.telegram-list-inner{
+overflow:hidden;
+min-height:0
+}
 .channel-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -301,7 +360,10 @@ border-radius:13px;
 padding:13px 15px;
 transition:.2s
 }
-.channel-link:hover{border-color:var(--brand);transform:translateY(-2px)}
+.channel-link:hover{
+border-color:var(--brand);
+transform:translateY(-2px)
+}
 .channel-link strong{display:block}
 .channel-link small{
 display:block;
@@ -318,6 +380,7 @@ border-radius:11px;
 background:#1d4770;
 color:#8dd3ff
 }
+
 .prayer{
 margin-top:22px;
 padding:19px 20px;
@@ -326,25 +389,56 @@ background:linear-gradient(145deg,#151d31,#211c3b);
 border:1px solid #34365a;
 text-align:center
 }
-.prayer h2{margin:0 0 8px;font-size:20px;color:#d9d5ff}
-.prayer p{margin:0;color:#e5e8f5;font-size:16px;line-height:2}
+.prayer h2{
+margin:0 0 8px;
+font-size:20px;
+color:#d9d5ff
+}
+.prayer p{
+margin:0;
+color:#e5e8f5;
+font-size:16px;
+line-height:2
+}
+.personal-prayer{
+margin-top:18px;
+padding:18px;
+border-radius:15px;
+background:#101a2b;
+border:1px solid #465080;
+text-align:center
+}
+.personal-prayer h3{
+color:#b9b4ff;
+margin:0 0 8px;
+font-size:20px
+}
+.personal-prayer p{
+color:#e5e8f5;
+margin:0;
+line-height:2
+}
+
 footer{
 text-align:center;
 color:var(--muted);
 font-size:14px;
 padding:24px 0 20px
 }
+
 @media(max-width:480px){
-.brand-strip{gap:10px;padding:13px}
-.brand-logo{width:82px;height:82px}
-.brand-copy h1{font-size:27px}
+.brand-strip{padding:16px 12px}
+.brand-copy h1{font-size:30px}
 .brand-copy p{font-size:14px}
 .panel{padding:16px}
 }
+
 @media print{
 body{background:white;color:#172036}
 .hero,.tabs,.panel,.go,.done,.err,footer,.finish,
-.telegram-area,.prayer{display:none!important}
+.telegram-area,.prayer,.personal-prayer{
+display:none!important
+}
 .summary,.cheer{
 -webkit-print-color-adjust:exact;
 print-color-adjust:exact
@@ -359,7 +453,6 @@ print-color-adjust:exact
 <header class="hero">
 <div class="wrap">
 <div class="brand-strip">
-<img class="brand-logo" src="logo.webp" alt="شعار منبر التحصيلي">
 <div class="brand-copy">
 <h1>منبر التحصيلي</h1>
 <p>علمٌ يُتقن، وهدفٌ يُدرك</p>
@@ -381,22 +474,27 @@ print-color-adjust:exact
 
 <span class="label">المادة</span>
 <div class="chips">
+
 <label class="chip" style="--c:var(--math)">
 <input type="radio" name="subj" value="math" checked>
 <span>الرياضيات</span>
 </label>
+
 <label class="chip" style="--c:var(--phys)">
 <input type="radio" name="subj" value="phys">
 <span>الفيزياء</span>
 </label>
+
 <label class="chip" style="--c:var(--chem)">
 <input type="radio" name="subj" value="chem">
 <span>الكيمياء</span>
 </label>
+
 <label class="chip" style="--c:var(--bio)">
 <input type="radio" name="subj" value="bio">
 <span>الأحياء</span>
 </label>
+
 </div>
 
 <div class="fields">
@@ -476,6 +574,19 @@ print-color-adjust:exact
 وبارك في أوقاتهم وجهودهم، وارزقهم فهمًا وحفظًا وتوفيقًا،
 وبلّغهم أعلى الدرجات، وارزقهم ١٠٠ في التحصيلي،
 واجعل نجاحهم فرحةً لهم ولوالديهم، واكتب لهم الخير حيث كان.
+</p>
+</section>
+
+<section class="personal-prayer">
+<h3>دعوة خاصة</h3>
+<p>
+اللهم وفّق صاحب هذا المنبر، وافتح عليه فتوح العارفين،
+ويسّر له دراسته، وبارك له في وقته وجهده،
+وارزقه فهمًا لا ينسى، وحفظًا لا يتفلت،
+وبلّغه ١٠٠ في اختبار التحصيلي،
+واجعل هذا التفوق فرحةً له ولوالديه،
+واكتب له النجاح والتوفيق في الدنيا والآخرة.
+اللهم آمين.
 </p>
 </section>
 
